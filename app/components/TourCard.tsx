@@ -108,14 +108,14 @@ export default function TourCard({
           <div>
             <p className="text-xs text-gray-500">{duration}</p>
             <p className="text-lg font-bold text-green-900">
-              Desde <span className="text-orange-500">${price}</span>
+              From <span className="text-orange-500">${price}</span>
             </p>
           </div>
           <Link
             href={`/tours/${id}`}
             className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-full font-semibold text-sm transition-colors"
           >
-            Reservar
+            Book
           </Link>
         </div>
       </div>

@@ -24,24 +24,24 @@ export default function Home() {
 
         <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            Vive la <span className="text-orange-400">Aventura</span>
+            Live the <span className="text-orange-400">Adventure</span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-gray-200">
-            Descubre las mejores experiencias de turismo en Guanacaste, Costa Rica.
-            Naturaleza, cultura y aventura te esperan.
+            Discover the best tourism experiences in Guanacaste, Costa Rica.
+            Nature, culture and adventure await you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/tours"
               className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full font-bold text-lg transition-colors"
             >
-              Explorar Tours
+              Explore Tours
             </Link>
             <Link
-              href="#sobre-nosotros"
+              href="#about-us"
               className="border-2 border-white hover:bg-white hover:text-green-900 text-white px-8 py-4 rounded-full font-bold text-lg transition-colors"
             >
-              Conocer más
+              Learn More
             </Link>
           </div>
         </div>
@@ -62,8 +62,8 @@ export default function Home() {
               Costa Rica, <span className="text-orange-500">Pura Vida</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Un país donde la biodiversidad se encuentra con la aventura. Hogar del 5% de la biodiversidad mundial
-              en solo el 0.03% de la superficie terrestre.
+              A country where biodiversity meets adventure. Home to 5% of the world&apos;s biodiversity
+              in just 0.03% of the Earth&apos;s surface.
             </p>
           </div>
 
@@ -71,42 +71,42 @@ export default function Home() {
             <div className="relative h-80 rounded-2xl overflow-hidden group">
               <Image
                 src="https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/rana-ojos-rojos.jpeg"
-                alt="Rana de ojos rojos de Costa Rica"
+                alt="Red-eyed tree frog from Costa Rica"
                 fill
                 className="object-cover group-hover:scale-110 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-green-950/80 to-transparent" />
               <div className="absolute bottom-6 left-6 text-white">
-                <h3 className="text-2xl font-bold mb-2">Biodiversidad Única</h3>
-                <p className="text-gray-200">Flora y fauna excepcional</p>
+                <h3 className="text-2xl font-bold mb-2">Unique Biodiversity</h3>
+                <p className="text-gray-200">Exceptional flora and fauna</p>
               </div>
             </div>
 
             <div className="relative h-80 rounded-2xl overflow-hidden group">
               <Image
                 src="https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/serpiente-costa-rica.jpeg"
-                alt="Serpiente de Costa Rica"
+                alt="Snake from Costa Rica"
                 fill
                 className="object-cover group-hover:scale-110 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-green-950/80 to-transparent" />
               <div className="absolute bottom-6 left-6 text-white">
-                <h3 className="text-2xl font-bold mb-2">Vida Silvestre</h3>
-                <p className="text-gray-200">Encuentros con la naturaleza</p>
+                <h3 className="text-2xl font-bold mb-2">Wildlife</h3>
+                <p className="text-gray-200">Encounters with nature</p>
               </div>
             </div>
 
             <div className="relative h-80 rounded-2xl overflow-hidden group md:col-span-2 lg:col-span-1">
               <Image
                 src="https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/sloth-costa-rica.jpeg"
-                alt="Perezoso de Costa Rica"
+                alt="Sloth from Costa Rica"
                 fill
                 className="object-cover group-hover:scale-110 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-green-950/80 to-transparent" />
               <div className="absolute bottom-6 left-6 text-white">
-                <h3 className="text-2xl font-bold mb-2">Experiencias Únicas</h3>
-                <p className="text-gray-200">Momentos inolvidables</p>
+                <h3 className="text-2xl font-bold mb-2">Unique Experiences</h3>
+                <p className="text-gray-200">Unforgettable moments</p>
               </div>
             </div>
           </div>
@@ -119,48 +119,48 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                <span className="text-orange-400">Guanacaste</span>, tu destino
+                <span className="text-orange-400">Guanacaste</span>, Your Destination
               </h2>
               <p className="text-lg text-gray-300 mb-6">
-                Guanacaste es una de las provincias más hermosas de Costa Rica, conocida por sus playas
-                de ensueño, su rica cultura sabanera y su biodiversidad única. Aquí encontrarás desde
-                volcanes majestuosos hasta bosques tropicales secos.
+                Guanacaste is one of the most beautiful provinces in Costa Rica, known for its
+                dream beaches, rich cowboy culture and unique biodiversity. Here you&apos;ll find
+                everything from majestic volcanoes to tropical dry forests.
               </p>
               <p className="text-lg text-gray-300 mb-6">
-                La Península de Nicoya, ubicada en Guanacaste, es reconocida mundialmente como una de
-                las 7 Zonas Azules del mundo, donde la longevidad y la calidad de vida son excepcionales.
+                The Nicoya Peninsula, located in Guanacaste, is recognized worldwide as one of
+                the 7 Blue Zones in the world, where longevity and quality of life are exceptional.
               </p>
               <ul className="space-y-4">
                 <li className="flex items-center gap-3">
                   <svg className="w-6 h-6 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span>Playas paradisíacas</span>
+                  <span>Paradise beaches</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <svg className="w-6 h-6 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span>Zona Azul de longevidad</span>
+                  <span>Blue Zone of longevity</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <svg className="w-6 h-6 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span>Cultura y tradiciones</span>
+                  <span>Culture and traditions</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <svg className="w-6 h-6 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span>Aventura y ecoturismo</span>
+                  <span>Adventure and ecotourism</span>
                 </li>
               </ul>
             </div>
             <div className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden">
               <Image
                 src="https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/serpiente-guanacaste.jpeg"
-                alt="Naturaleza de Guanacaste"
+                alt="Guanacaste Nature"
                 fill
                 className="object-cover"
               />
@@ -174,10 +174,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-4">
-              Nuestros <span className="text-orange-500">Tours</span>
+              Our <span className="text-orange-500">Tours</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Experiencias cuidadosamente diseñadas para que vivas Costa Rica al máximo
+              Carefully designed experiences for you to live Costa Rica to the fullest
             </p>
           </div>
 
@@ -192,45 +192,45 @@ export default function Home() {
               href="/tours"
               className="inline-block bg-green-900 hover:bg-green-800 text-white px-8 py-4 rounded-full font-bold text-lg transition-colors"
             >
-              Ver todos los tours
+              View all tours
             </Link>
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="sobre-nosotros" className="py-20 bg-white">
+      <section id="about-us" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-96 lg:h-[500px] rounded-2xl overflow-hidden">
               <Image
                 src="https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/ave-costa-rica.jpeg"
-                alt="Sobre GoAdventuresCR"
+                alt="About GoAdventuresCR"
                 fill
                 className="object-cover"
               />
             </div>
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-6">
-                Sobre <span className="text-orange-500">Nosotros</span>
+                About <span className="text-orange-500">Us</span>
               </h2>
               <p className="text-lg text-gray-600 mb-6">
-                Somos una empresa local ubicada en el corazón de Guanacaste, Costa Rica. Nuestro equipo
-                está formado por personas apasionadas por compartir la belleza y la riqueza cultural de
-                nuestra tierra con visitantes de todo el mundo.
+                We are a local company located in the heart of Guanacaste, Costa Rica. Our team
+                is made up of people passionate about sharing the beauty and cultural richness of
+                our land with visitors from around the world.
               </p>
               <p className="text-lg text-gray-600 mb-6">
-                Creemos en el turismo sostenible y responsable. Cada una de nuestras experiencias está
-                diseñada para respetar el medio ambiente y contribuir positivamente a las comunidades locales.
+                We believe in sustainable and responsible tourism. Each of our experiences is
+                designed to respect the environment and contribute positively to local communities.
               </p>
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center p-4 bg-green-50 rounded-xl">
                   <div className="text-3xl font-bold text-orange-500">100+</div>
-                  <div className="text-gray-600">Aventuras realizadas</div>
+                  <div className="text-gray-600">Adventures completed</div>
                 </div>
                 <div className="text-center p-4 bg-green-50 rounded-xl">
                   <div className="text-3xl font-bold text-orange-500">4.8</div>
-                  <div className="text-gray-600">Calificación promedio</div>
+                  <div className="text-gray-600">Average rating</div>
                 </div>
               </div>
             </div>
@@ -242,16 +242,16 @@ export default function Home() {
       <section className="py-20 bg-gradient-to-r from-orange-500 to-orange-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            ¿Listo para tu próxima aventura?
+            Ready for your next adventure?
           </h2>
           <p className="text-xl text-orange-100 mb-8">
-            Reserva hoy y vive experiencias únicas en Guanacaste, Costa Rica
+            Book today and live unique experiences in Guanacaste, Costa Rica
           </p>
           <Link
             href="/tours"
             className="inline-block bg-white hover:bg-gray-100 text-orange-600 px-8 py-4 rounded-full font-bold text-lg transition-colors"
           >
-            Reservar ahora
+            Book now
           </Link>
         </div>
       </section>

@@ -5,12 +5,12 @@ export default function Footer() {
     <footer className="bg-green-950 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Logo y descripción */}
+          {/* Logo and description */}
           <div>
             <h3 className="text-2xl font-bold text-orange-400 mb-4">goadventurescr</h3>
             <p className="text-gray-300 mb-4">
-              Tu puerta de entrada a las mejores aventuras en Guanacaste, Costa Rica.
-              Experiencias únicas que conectan con la naturaleza y la cultura local.
+              Your gateway to the best adventures in Guanacaste, Costa Rica.
+              Unique experiences that connect with nature and local culture.
             </p>
             <div className="flex items-center gap-2 text-gray-300">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-orange-400" viewBox="0 0 20 20" fill="currentColor">
@@ -20,13 +20,13 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Enlaces rápidos */}
+          {/* Quick links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Enlaces</h4>
+            <h4 className="text-lg font-semibold mb-4">Links</h4>
             <ul className="space-y-2">
               <li>
                 <Link href="/" className="text-gray-300 hover:text-orange-400 transition-colors">
-                  Inicio
+                  Home
                 </Link>
               </li>
               <li>
@@ -35,8 +35,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/#sobre-nosotros" className="text-gray-300 hover:text-orange-400 transition-colors">
-                  Sobre Nosotros
+                <Link href="/#about-us" className="text-gray-300 hover:text-orange-400 transition-colors">
+                  About Us
                 </Link>
               </li>
               <li>
@@ -47,9 +47,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contacto */}
+          {/* Contact */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contacto</h4>
+            <h4 className="text-lg font-semibold mb-4">Contact</h4>
             <ul className="space-y-2 text-gray-300">
               <li className="flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-orange-400" viewBox="0 0 20 20" fill="currentColor">
@@ -69,7 +69,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-green-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; {new Date().getFullYear()} GoAdventuresCR. Todos los derechos reservados.</p>
+          <p>&copy; {new Date().getFullYear()} GoAdventuresCR. All rights reserved.</p>
         </div>
       </div>
     </footer>

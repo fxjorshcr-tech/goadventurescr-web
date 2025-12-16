@@ -22,7 +22,7 @@ export default function QuoteForm({ tourName, tourPrice }: QuoteFormProps) {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simular envío - aquí conectarías con tu backend/API
+    // Simulate submission - connect to your backend/API here
     await new Promise(resolve => setTimeout(resolve, 1000));
 
     console.log('Quote request:', { ...formData, tourName });
@@ -38,9 +38,9 @@ export default function QuoteForm({ tourName, tourPrice }: QuoteFormProps) {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-xl font-bold text-green-900 mb-2">¡Solicitud enviada!</h3>
+        <h3 className="text-xl font-bold text-green-900 mb-2">Request Sent!</h3>
         <p className="text-green-700">
-          Gracias {formData.name}. Te contactaremos pronto a {formData.email} con tu cotización.
+          Thank you {formData.name}. We will contact you soon at {formData.email} with your quote.
         </p>
       </div>
     );
@@ -49,16 +49,16 @@ export default function QuoteForm({ tourName, tourPrice }: QuoteFormProps) {
   return (
     <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-lg sticky top-24">
       <div className="mb-6">
-        <p className="text-sm text-gray-500">Desde</p>
+        <p className="text-sm text-gray-500">From</p>
         <p className="text-3xl font-bold text-green-900">
-          ${tourPrice} <span className="text-base font-normal text-gray-500">por adulto</span>
+          ${tourPrice} <span className="text-base font-normal text-gray-500">per adult</span>
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-            Nombre completo *
+            Full Name *
           </label>
           <input
             type="text"
@@ -67,13 +67,13 @@ export default function QuoteForm({ tourName, tourPrice }: QuoteFormProps) {
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-colors"
-            placeholder="Tu nombre"
+            placeholder="Your name"
           />
         </div>
 
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-            Correo electrónico *
+            Email *
           </label>
           <input
             type="email"
@@ -82,13 +82,13 @@ export default function QuoteForm({ tourName, tourPrice }: QuoteFormProps) {
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-colors"
-            placeholder="tu@email.com"
+            placeholder="your@email.com"
           />
         </div>
 
         <div>
           <label htmlFor="guests" className="block text-sm font-medium text-gray-700 mb-1">
-            Cantidad de personas *
+            Number of Guests *
           </label>
           <select
             id="guests"
@@ -99,16 +99,16 @@ export default function QuoteForm({ tourName, tourPrice }: QuoteFormProps) {
           >
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
               <option key={num} value={num}>
-                {num} {num === 1 ? 'persona' : 'personas'}
+                {num} {num === 1 ? 'guest' : 'guests'}
               </option>
             ))}
-            <option value={15}>Más de 10 personas</option>
+            <option value={15}>More than 10 guests</option>
           </select>
         </div>
 
         <div>
           <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-1">
-            Fecha preferida
+            Preferred Date
           </label>
           <input
             type="date"
@@ -122,7 +122,7 @@ export default function QuoteForm({ tourName, tourPrice }: QuoteFormProps) {
 
         <div>
           <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-            Mensaje (opcional)
+            Message (optional)
           </label>
           <textarea
             id="message"
@@ -130,7 +130,7 @@ export default function QuoteForm({ tourName, tourPrice }: QuoteFormProps) {
             value={formData.message}
             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-colors resize-none"
-            placeholder="¿Alguna solicitud especial?"
+            placeholder="Any special requests?"
           />
         </div>
 
@@ -145,10 +145,10 @@ export default function QuoteForm({ tourName, tourPrice }: QuoteFormProps) {
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
               </svg>
-              Enviando...
+              Sending...
             </>
           ) : (
-            'Solicitar cotización'
+            'Request Quote'
           )}
         </button>
       </form>
@@ -158,19 +158,19 @@ export default function QuoteForm({ tourName, tourPrice }: QuoteFormProps) {
           <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
           </svg>
-          Cancelación gratuita hasta 24h antes
+          Free cancellation up to 24h before
         </div>
         <div className="flex items-center gap-2 text-sm text-gray-600">
           <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
           </svg>
-          Reserva ahora y paga después
+          Reserve now and pay later
         </div>
         <div className="flex items-center gap-2 text-sm text-gray-600">
           <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
           </svg>
-          Confirmación inmediata
+          Instant confirmation
         </div>
       </div>
     </div>
