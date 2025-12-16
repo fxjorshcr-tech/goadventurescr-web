@@ -28,7 +28,7 @@ export default function ImageSlider({ images, title }: ImageSliderProps) {
   };
 
   return (
-    <div className="relative h-[40vh] md:h-[50vh] w-full overflow-hidden">
+    <div className="relative h-[70vh] md:h-[85vh] w-full overflow-hidden">
       {/* Images */}
       {images.map((image, index) => (
         <div
@@ -39,7 +39,7 @@ export default function ImageSlider({ images, title }: ImageSliderProps) {
         >
           <Image
             src={image}
-            alt={`${title} - Imagen ${index + 1}`}
+            alt={`${title} - Image ${index + 1}`}
             fill
             className="object-cover"
             priority={index === 0}
@@ -54,7 +54,7 @@ export default function ImageSlider({ images, title }: ImageSliderProps) {
       <button
         onClick={goToPrevious}
         className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white p-3 rounded-full transition-colors z-10"
-        aria-label="Imagen anterior"
+        aria-label="Previous image"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -64,7 +64,7 @@ export default function ImageSlider({ images, title }: ImageSliderProps) {
       <button
         onClick={goToNext}
         className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white p-3 rounded-full transition-colors z-10"
-        aria-label="Imagen siguiente"
+        aria-label="Next image"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -72,7 +72,7 @@ export default function ImageSlider({ images, title }: ImageSliderProps) {
       </button>
 
       {/* Dots indicator */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+      <div className="absolute bottom-24 md:bottom-28 left-1/2 -translate-x-1/2 flex gap-2 z-10">
         {images.map((_, index) => (
           <button
             key={index}
@@ -82,7 +82,7 @@ export default function ImageSlider({ images, title }: ImageSliderProps) {
                 ? 'bg-orange-500'
                 : 'bg-white/50 hover:bg-white/80'
             }`}
-            aria-label={`Ir a imagen ${index + 1}`}
+            aria-label={`Go to image ${index + 1}`}
           />
         ))}
       </div>
