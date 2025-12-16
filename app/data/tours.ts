@@ -8,6 +8,7 @@ export interface Tour {
   rating: number;
   reviewCount: number;
   image: string;
+  images: string[];
   category: string;
   highlights: string[];
   included: string[];
@@ -24,267 +25,287 @@ export interface Tour {
 export const tours: Tour[] = [
   {
     id: "tirolesa-aventura",
-    title: "Aventura en Tirolesa Personalizable",
-    description: "¡Muchas aventuras y momentos inolvidables le esperan a toda su familia! Algunos de nuestros escaladores más confiados comienzan a entrenar a la edad de 2 años.",
-    longDescription: `¿Estás buscando una actividad divertida para toda la familia? Únase a nosotros y a los monos aulladores que se balancean de árbol en árbol. ¡De jóvenes a mayores, la experiencia está diseñada para todos ustedes! Nuestros aventureros más jóvenes tienen 2 años y aspiran a convertirse en escaladores ágiles y seguros.
+    title: "Customizable Zipline Adventure",
+    description: "Many adventures and unforgettable moments await your whole family! Some of our most confident climbers start training at the age of 2.",
+    longDescription: `Are you looking for a fun activity for the whole family? Join us and the howler monkeys swinging from tree to tree. From young to old, the experience is designed for all of you! Our youngest adventurers are 2 years old and aspire to become agile and confident climbers.
 
-El parkour está diseñado para mejorar la cohesión de tu familia mientras exploras el importante acuífero de Nimboyores, responsable de una gran cantidad de agua que fluye hacia la costa.
+The parkour is designed to improve your family's cohesion while exploring the important Nimboyores aquifer, responsible for a large amount of water flowing to the coast.
 
-A poca distancia en auto de varias ubicaciones de playa, este lugar invita a una entretenida excursión de medio día.
+A short drive from several beach locations, this place invites an entertaining half-day excursion.
 
-Además de las tirolesas descubre:
-• Puente colgante
-• Puente tibetano
-• Escalera de caracol que envuelve un árbol gigante de Guanacaste
-• ¡E incluso un columpio de Tarzán!
+In addition to the ziplines discover:
+• Hanging bridge
+• Tibetan bridge
+• Spiral staircase wrapping around a giant Guanacaste tree
+• And even a Tarzan swing!
 
-ATARDECER
-¡Las puestas de sol más hermosas necesitan un cielo nublado que pinte el mundo artísticamente en naranja y púrpura! ¡Ponte el casco y enciende la linterna frontal porque se va a poner serio! Balancéate como Tarzán de árbol en árbol, vuela en tirolesa por el cielo y pasa por encima de un puente colgante mientras la noche se acerca.
+SUNSET
+The most beautiful sunsets need a cloudy sky to paint the world artistically in orange and purple! Put on your helmet and turn on your headlamp because things are about to get serious! Swing like Tarzan from tree to tree, fly on ziplines through the sky and cross a hanging bridge as night approaches.
 
-NOCHE
-Para una dosis extra de adrenalina, ¡apaguemos las luces! Entrena tus ojos de búho y da el salto. Experimente los misterios de la selva costarricense por la noche, esté atento a los animales que solo salen en la oscuridad y disfrute de esta aventura única de autodescubrimiento.`,
+NIGHT
+For an extra dose of adrenaline, let's turn off the lights! Train your owl eyes and take the leap. Experience the mysteries of the Costa Rican jungle at night, watch for animals that only come out in the dark, and enjoy this unique adventure of self-discovery.`,
     price: 86,
-    duration: "3 horas",
+    duration: "3 hours",
     rating: 5.0,
     reviewCount: 1,
-    image: "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/sloth-costa-rica.jpeg",
-    category: "Tirolina",
+    image: "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/tirolesa1.png",
+    images: [
+      "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/tirolesa1.png",
+      "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/tirolesa2.JPG",
+      "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/tirolesa4.jpeg"
+    ],
+    category: "Zipline",
     highlights: [
-      "Cancelación gratuita hasta 24 horas antes",
-      "Guía en español e inglés",
-      "Apto para toda la familia (desde 2 años)",
-      "Experiencia al atardecer o noche disponible",
-      "Incluye puente colgante y tibetano",
-      "Columpio de Tarzán incluido"
+      "Free cancellation up to 24 hours before",
+      "Spanish and English guide",
+      "Suitable for the whole family (from 2 years old)",
+      "Sunset or night experience available",
+      "Includes hanging and Tibetan bridges",
+      "Tarzan swing included"
     ],
     included: [
-      "Agua embotellada",
-      "Equipo de seguridad completo",
-      "Guía profesional certificado",
-      "Casco y linterna (tours nocturnos)"
+      "Bottled water",
+      "Complete safety equipment",
+      "Certified professional guide",
+      "Helmet and headlamp (night tours)"
     ],
     notIncluded: [
-      "Recogida en hotel (disponible con costo adicional)",
-      "Fotos de recuerdo"
+      "Hotel pickup (available at additional cost)",
+      "Souvenir photos"
     ],
     itinerary: [
-      "Llegada y registro en el parque",
-      "Briefing de seguridad y equipamiento",
-      "Recorrido de tirolesas principales",
-      "Cruce de puente colgante",
-      "Aventura en puente tibetano",
-      "Escalera de caracol en árbol gigante",
-      "Columpio de Tarzán",
-      "Tiempo libre y fotos",
-      "Regreso al punto de inicio"
+      "Arrival and check-in at the park",
+      "Safety briefing and equipment",
+      "Main zipline tour",
+      "Hanging bridge crossing",
+      "Tibetan bridge adventure",
+      "Spiral staircase on giant tree",
+      "Tarzan swing",
+      "Free time and photos",
+      "Return to starting point"
     ],
     location: "Province of Guanacaste",
     maxParticipants: 15,
-    cancellationPolicy: "Para recibir el reembolso íntegro de la experiencia debes cancelarla al menos 24 horas antes de que empiece.",
-    ageRange: "2 a 99 años",
-    accessibility: "No es accesible para sillas de ruedas",
+    cancellationPolicy: "For a full refund, you must cancel the experience at least 24 hours before it starts.",
+    ageRange: "2 to 99 years",
+    accessibility: "Not wheelchair accessible",
     additionalInfo: [
-      "La confirmación se recibirá en el momento en que se realice la reserva",
-      "No es recomendable para viajeros con problemas de espalda",
-      "No es recomendable para embarazadas",
-      "La mayoría de viajeros pueden participar en la experiencia",
-      "En esta excursión debe haber un número mínimo de viajeros"
+      "Confirmation will be received at time of booking",
+      "Not recommended for travelers with back problems",
+      "Not recommended for pregnant travelers",
+      "Most travelers can participate in the experience",
+      "This tour requires a minimum number of travelers"
     ]
   },
   {
     id: "zona-azul-guanacaste",
-    title: "Tour de Medio Día en Zona Azul de Guanacaste",
-    description: "Revelan los secretos de la longevidad en Costa Rica. Imagina vivir una vida llena de alegría y vitalidad, donde puedas apreciar cada momento.",
-    longDescription: `Descubra los secretos de la longevidad: viaje a través de zonas de vitalidad, donde las enfermedades crónicas son raras y la esperanza de vida aumenta.
+    title: "Half-Day Blue Zone Tour in Guanacaste",
+    description: "Discover the secrets of longevity in Costa Rica. Imagine living a life full of joy and vitality, where you can appreciate every moment.",
+    longDescription: `Discover the secrets of longevity: travel through zones of vitality, where chronic diseases are rare and life expectancy increases.
 
-Sumérgete en un estilo de vida marcado por una vigorizante actividad física, sólidos vínculos comunitarios y una dieta profundamente arraigada en las tradiciones regionales. Descubra los matices culturales de los centenarios y deleite sus sentidos con sus tesoros culinarios locales.
+Immerse yourself in a lifestyle marked by invigorating physical activity, strong community bonds, and a diet deeply rooted in regional traditions. Discover the cultural nuances of centenarians and delight your senses with their local culinary treasures.
 
-GUAITIL POTTERY STUDIO (1 hora)
-Para en: Guaitil Pottery Studio, La Rotonda next to the restaurant Surf Shack, Tamarindo, Costa Rica
+GUAITIL POTTERY STUDIO (1 hour)
+Stop at: Guaitil Pottery Studio, La Rotonda next to the restaurant Surf Shack, Tamarindo, Costa Rica
 
-Únase a nosotros en este viaje de retroceso a mil años de tradición, para experimentar la Costa Rica de otros milenios, antes de los conquistadores, antes de la modernización, antes de que Costa Rica fuera Costa Rica. Guaitil vive, respira historia. Guaitil es un pueblo indígena Chorotega, llamado así por el árbol Guaitil que da tintes, donde encontrará más respuestas sobre cómo surgió la Zona Azul.
+Join us on this journey back through a thousand years of tradition, to experience the Costa Rica of other millennia, before the conquistadors, before modernization, before Costa Rica was Costa Rica. Guaitil lives, breathes history. Guaitil is an indigenous Chorotega village, named after the Guaitil dye tree, where you will find more answers about how the Blue Zone came to be.
 
-NICOYA (1 hora)
-Para en: Nicoya, Nicoya, Province of Guanacaste
+NICOYA (1 hour)
+Stop at: Nicoya, Nicoya, Province of Guanacaste
 
-¿Sabías que Nicoya es una de las 7 Zonas Azules reconocidas mundialmente?
+Did you know that Nicoya is one of the 7 Blue Zones recognized worldwide?
 
-Emprendamos un viaje en el tiempo en Nicoya, donde los ecos del pasado resuenan en cada rincón. Sumérgete en el ambiente sereno de esta joya cultural, un testimonio del legado de Costa Rica. Maravíllate ante la obra maestra arquitectónica histórica que representa las iglesias más antiguas del país.`,
+Let's embark on a journey through time in Nicoya, where echoes of the past resonate in every corner. Immerse yourself in the serene atmosphere of this cultural gem, a testament to Costa Rica's legacy. Marvel at the historic architectural masterpiece representing the oldest churches in the country.`,
     price: 208,
-    duration: "5-6 horas",
-    rating: 3.0,
+    duration: "5-6 hours",
+    rating: 5.0,
     reviewCount: 1,
-    image: "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/artesania.jpeg",
-    category: "Privados y de lujo",
+    image: "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/artesania1.png",
+    images: [
+      "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/artesania1.png",
+      "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/artesania2.png",
+      "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/artesania3.png"
+    ],
+    category: "Private & Luxury",
     highlights: [
-      "Cancelación gratuita hasta 24 horas antes",
-      "Tour privado y de lujo",
-      "Almuerzo tradicional incluido",
-      "Visita a Guaitil Pottery Studio",
-      "Explora una de las 7 Zonas Azules del mundo",
-      "Recogida incluida en hotel"
+      "Free cancellation up to 24 hours before",
+      "Private and luxury tour",
+      "Traditional lunch included",
+      "Visit to Guaitil Pottery Studio",
+      "Explore one of the 7 Blue Zones in the world",
+      "Hotel pickup included"
     ],
     included: [
-      "Agua embotellada",
-      "Sodas y refrescos",
-      "Almuerzo Tradicional Local",
-      "Entrada a Guaitil Pottery Studio",
-      "Transporte en vehículo con aire acondicionado",
-      "Guía local experto",
-      "Recogida y regreso al hotel"
+      "Bottled water",
+      "Sodas and refreshments",
+      "Traditional Local Lunch",
+      "Entrance to Guaitil Pottery Studio",
+      "Air-conditioned vehicle transportation",
+      "Expert local guide",
+      "Hotel pickup and drop-off"
     ],
     itinerary: [
-      "Recogida en hotel",
-      "Traslado a Santa Bárbara, Guanacaste",
-      "Visita a Guaitil Pottery Studio (1 hora)",
-      "Demostración de cerámica Chorotega",
-      "Traslado a Nicoya",
-      "Exploración del pueblo de Nicoya (1 hora)",
-      "Visita a la iglesia histórica",
-      "Almuerzo tradicional",
-      "Regreso al hotel"
+      "Hotel pickup",
+      "Transfer to Santa Bárbara, Guanacaste",
+      "Visit to Guaitil Pottery Studio (1 hour)",
+      "Chorotega pottery demonstration",
+      "Transfer to Nicoya",
+      "Exploration of Nicoya town (1 hour)",
+      "Visit to the historic church",
+      "Traditional lunch",
+      "Return to hotel"
     ],
-    location: "Santa Bárbara y Nicoya, Guanacaste",
+    location: "Santa Bárbara and Nicoya, Guanacaste",
     maxParticipants: 10,
-    cancellationPolicy: "Para recibir el reembolso íntegro de la experiencia debes cancelarla al menos 24 horas antes de que empiece.",
-    ageRange: "Todas las edades",
-    accessibility: "No es accesible para sillas de ruedas",
+    cancellationPolicy: "For a full refund, you must cancel the experience at least 24 hours before it starts.",
+    ageRange: "All ages",
+    accessibility: "Not wheelchair accessible",
     additionalInfo: [
-      "La confirmación se recibirá en el momento en que se realice la reserva",
-      "Esta es una excursión o actividad privada. Solo puede participar su grupo",
-      "Se reserva con 78 días de antelación en promedio",
-      "En esta experiencia debe haber un número mínimo de viajeros"
+      "Confirmation will be received at time of booking",
+      "This is a private tour or activity. Only your group will participate",
+      "Booked an average of 78 days in advance",
+      "This experience requires a minimum number of travelers"
     ]
   },
   {
     id: "inmersion-cafe",
-    title: "Inmersión para Amantes del Café",
-    description: "Una excelente manera de aprender sobre la cultura costarricense es a través de su café, y este tour privado hace precisamente eso.",
-    longDescription: `¿Desea conocer la cultura costarricense? ¡Entonces empieza con el café!
+    title: "Coffee Lovers Immersion",
+    description: "A great way to learn about Costa Rican culture is through its coffee, and this private tour does just that.",
+    longDescription: `Want to know Costa Rican culture? Then start with coffee!
 
-Más del 90% de la producción de café se exporta a todo el mundo debido a la combinación ideal de clima, altitud y suelo de Costa Rica. ¡Pruébelo usted mismo y deje que nuestros agricultores locales lo guíen a través de los procesos y técnicas que transforman estos frutos rojos en una delicia aromática! 🍒
+More than 90% of coffee production is exported worldwide due to Costa Rica's ideal combination of climate, altitude and soil. Try it yourself and let our local farmers guide you through the processes and techniques that transform these red fruits into an aromatic delight! 🍒
 
-Por supuesto, esto incluye probar las múltiples variedades y aprender a distinguir cervezas de calidad.
+Of course, this includes tasting multiple varieties and learning to distinguish quality brews.
 
-*DE PRIMERA CALIDAD*
-Para aquellos que buscan descubrir más secretos culturales, actualice a nuestra Experiencia Premium que agrega una inmersión en la cultura chorotega y un refrigerio local a su viaje.
+*PREMIUM*
+For those looking to discover more cultural secrets, upgrade to our Premium Experience which adds a Chorotega culture immersion and a local snack to your trip.
 
-Lo llevaremos a un pueblo que conserva el espíritu indígena a través de una experiencia práctica de cerámica que tiene como objetivo transmitir y atesorar la memoria de sus antepasados.
+We will take you to a village that preserves the indigenous spirit through a hands-on pottery experience that aims to transmit and treasure the memory of their ancestors.
 
-Una excelente manera de aprender sobre la cultura costarricense es a través de su café, y este tour privado hace precisamente eso. Comenzará el recorrido con la recogida en el hotel para mayor comodidad y luego aprenderá todo sobre el café costarricense.`,
+A great way to learn about Costa Rican culture is through its coffee, and this private tour does just that. You'll start the tour with hotel pickup for convenience and then learn all about Costa Rican coffee.`,
     price: 169,
-    duration: "6 horas",
-    rating: 4.8,
+    duration: "6 hours",
+    rating: 5.0,
     reviewCount: 4,
-    image: "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/ave-costa-rica.jpeg",
-    category: "Clases de cocina",
+    image: "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/cafe1.png",
+    images: [
+      "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/cafe1.png",
+      "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/cafe2.png",
+      "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/cafe3.png"
+    ],
+    category: "Cooking Classes",
     highlights: [
-      "Cancelación gratuita hasta 24 horas antes",
-      "Tour privado personalizado",
-      "Degustación de múltiples variedades de café",
-      "Recogida y regreso al hotel incluidos",
-      "Guía en español e inglés",
-      "Opción Premium con cerámica Chorotega"
+      "Free cancellation up to 24 hours before",
+      "Personalized private tour",
+      "Tasting of multiple coffee varieties",
+      "Hotel pickup and drop-off included",
+      "Spanish and English guide",
+      "Premium option with Chorotega pottery"
     ],
     included: [
-      "Todas las actividades",
-      "Conductor / guía",
-      "Botella de agua",
-      "Recogida y regreso al hotel",
-      "Transporte en minivan con aire acondicionado",
-      "Degustación de café"
+      "All activities",
+      "Driver / guide",
+      "Water bottle",
+      "Hotel pickup and drop-off",
+      "Air-conditioned minivan transportation",
+      "Coffee tasting"
     ],
     notIncluded: [
-      "Fotos de recuerdo (disponibles para comprar)",
-      "Propinas"
+      "Souvenir photos (available for purchase)",
+      "Tips"
     ],
     itinerary: [
-      "Recogida en hotel",
-      "Traslado a la finca cafetalera",
-      "Tour por los cultivos de café",
-      "Explicación del proceso de cosecha",
-      "Demostración del proceso de tostado",
-      "Clase de preparación de café",
-      "Degustación de variedades",
-      "Tiempo para compras (opcional)",
-      "Regreso al hotel"
+      "Hotel pickup",
+      "Transfer to coffee farm",
+      "Tour of coffee crops",
+      "Explanation of harvesting process",
+      "Roasting process demonstration",
+      "Coffee preparation class",
+      "Variety tasting",
+      "Shopping time (optional)",
+      "Return to hotel"
     ],
     location: "Tamarindo, Province of Guanacaste",
     maxParticipants: 12,
-    cancellationPolicy: "Para recibir el reembolso íntegro de la experiencia debes cancelarla al menos 24 horas antes de que empiece.",
-    ageRange: "1 a 99 años",
-    accessibility: "Accesible en silla de ruedas",
+    cancellationPolicy: "For a full refund, you must cancel the experience at least 24 hours before it starts.",
+    ageRange: "1 to 99 years",
+    accessibility: "Wheelchair accessible",
     additionalInfo: [
-      "La confirmación se recibirá en el momento en que se realice la reserva",
-      "Los niños deben estar acompañados por un adulto",
-      "Puede ser operado por un guía multilingüe",
-      "Esta es una excursión o actividad privada. Solo puede participar su grupo"
+      "Confirmation will be received at time of booking",
+      "Children must be accompanied by an adult",
+      "May be operated by a multilingual guide",
+      "This is a private tour or activity. Only your group will participate"
     ]
   },
   {
     id: "cascadas-spa",
-    title: "Cascadas y Spa",
-    description: "¡Explore la fascinante naturaleza de Costa Rica y camine hacia una majestuosa cascada que cae en una cuenca natural!",
-    longDescription: `¡Explore la fascinante naturaleza de Costa Rica, tenga cuidado con la vida silvestre que habita en el área y camine hacia una majestuosa cascada que cae en una cuenca natural! Mientras admiras esta gigantesca belleza, disfruta de las aguas y deja que tu espíritu se maraville mientras sientes cómo todas tus cargas se desvanecen.
+    title: "Waterfalls & Spa",
+    description: "Explore the fascinating nature of Costa Rica and hike to a majestic waterfall that plunges into a natural basin!",
+    longDescription: `Explore the fascinating nature of Costa Rica, watch out for wildlife inhabiting the area and hike to a majestic waterfall that plunges into a natural basin! As you admire this gigantic beauty, enjoy the waters and let your spirit marvel as you feel all your burdens fade away.
 
-*DE PRIMERA CALIDAD*
-Para aquellos que deseen agregar un toque cultural a su viaje, con gusto su conductor privado incluirá una experiencia de degustación de café o compras de recuerdos en el camino. Además, ¡varias delicias locales estarán esperando a nuestros invitados como sorpresa!
+*PREMIUM*
+For those who wish to add a cultural touch to their trip, your private driver will gladly include a coffee tasting experience or souvenir shopping along the way. Plus, several local delicacies will be waiting for our guests as a surprise!
 
 LLANOS DE CORTÉS
-Para en: Llanos de Cortés, Provincia de Guanacaste, Bagaces, Costa Rica
+Stop at: Llanos de Cortés, Province of Guanacaste, Bagaces, Costa Rica
 
-Descubre una de las cascadas más impresionantes de Costa Rica. La cascada de Llanos de Cortés es un tesoro escondido que te dejará sin aliento. Sus aguas cristalinas caen desde una altura considerable formando una cortina de agua espectacular, perfecta para refrescarse y conectar con la naturaleza.
+Discover one of the most impressive waterfalls in Costa Rica. The Llanos de Cortés waterfall is a hidden treasure that will take your breath away. Its crystal-clear waters fall from a considerable height forming a spectacular curtain of water, perfect for cooling off and connecting with nature.
 
-El recorrido incluye tiempo suficiente para disfrutar del entorno natural, nadar en las pozas de agua fresca y capturar fotografías increíbles de este paraíso natural.`,
+The tour includes enough time to enjoy the natural surroundings, swim in the cool water pools and capture incredible photographs of this natural paradise.`,
     price: 204,
-    duration: "6 horas",
-    rating: 4.5,
+    duration: "6 hours",
+    rating: 5.0,
     reviewCount: 8,
-    image: "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/psicina.jpeg",
-    category: "Excursiones de un día",
+    image: "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/cascada1.png",
+    images: [
+      "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/cascada1.png",
+      "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/cascada2.png",
+      "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/cascada3.png"
+    ],
+    category: "Day Trips",
     highlights: [
-      "Cancelación gratuita hasta 24 horas antes",
-      "Cascada espectacular de Llanos de Cortés",
-      "Tiempo para nadar incluido",
-      "Opción de degustación de café",
-      "Delicias locales como sorpresa",
-      "Transporte de ida y vuelta incluido"
+      "Free cancellation up to 24 hours before",
+      "Spectacular Llanos de Cortés waterfall",
+      "Swimming time included",
+      "Coffee tasting option",
+      "Local delicacies as a surprise",
+      "Round-trip transportation included"
     ],
     included: [
-      "Entrada al parque nacional",
-      "Impuestos municipales",
-      "Botella de agua",
-      "Conductor y guía",
-      "Guía local",
-      "Traslado de ida y vuelta al hotel",
-      "Transporte en monovolumen con aire acondicionado"
+      "National park entrance",
+      "Municipal taxes",
+      "Water bottle",
+      "Driver and guide",
+      "Local guide",
+      "Round-trip hotel transfer",
+      "Air-conditioned minivan transportation"
     ],
     notIncluded: [
-      "Almuerzo (disponible para comprar)",
-      "Fotos profesionales",
-      "Propinas"
+      "Lunch (available for purchase)",
+      "Professional photos",
+      "Tips"
     ],
     itinerary: [
-      "Recogida en hotel",
-      "Traslado a Bagaces, Guanacaste",
-      "Llegada a Llanos de Cortés",
-      "Caminata hacia la cascada",
-      "Tiempo libre para nadar y explorar",
-      "Fotografías y descanso",
-      "Opción: degustación de café o compras",
-      "Sorpresa de delicias locales",
-      "Regreso al hotel"
+      "Hotel pickup",
+      "Transfer to Bagaces, Guanacaste",
+      "Arrival at Llanos de Cortés",
+      "Hike to the waterfall",
+      "Free time for swimming and exploring",
+      "Photos and rest",
+      "Option: coffee tasting or shopping",
+      "Surprise local delicacies",
+      "Return to hotel"
     ],
     location: "Llanos de Cortés, Bagaces, Guanacaste",
     maxParticipants: 10,
-    cancellationPolicy: "Para recibir el reembolso íntegro de la experiencia debes cancelarla al menos 24 horas antes de que empiece.",
-    ageRange: "Todas las edades",
-    accessibility: "Consultar disponibilidad",
+    cancellationPolicy: "For a full refund, you must cancel the experience at least 24 hours before it starts.",
+    ageRange: "All ages",
+    accessibility: "Check availability",
     additionalInfo: [
-      "La confirmación se recibirá en el momento en que se realice la reserva",
-      "La mayoría de viajeros pueden participar en la experiencia",
-      "Esta es una excursión o actividad privada. Solo puede participar su grupo",
-      "Se reserva con 25 días de antelación en promedio"
+      "Confirmation will be received at time of booking",
+      "Most travelers can participate in the experience",
+      "This is a private tour or activity. Only your group will participate",
+      "Booked an average of 25 days in advance"
     ]
   }
 ];

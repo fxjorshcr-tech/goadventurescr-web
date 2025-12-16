@@ -17,10 +17,10 @@ export default function Navbar() {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             <Link href="/" className="text-white hover:text-orange-400 transition-colors">
-              Inicio
+              Home
             </Link>
-            <Link href="/#sobre-nosotros" className="text-white hover:text-orange-400 transition-colors">
-              Nosotros
+            <Link href="/#about-us" className="text-white hover:text-orange-400 transition-colors">
+              About Us
             </Link>
             <Link href="/#costa-rica" className="text-white hover:text-orange-400 transition-colors">
               Costa Rica
@@ -29,7 +29,7 @@ export default function Navbar() {
               href="/tours"
               className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full font-semibold transition-colors"
             >
-              Ver Tours
+              View Tours
             </Link>
           </div>
 
@@ -58,14 +58,14 @@ export default function Navbar() {
                 className="text-white hover:text-orange-400 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Inicio
+                Home
               </Link>
               <Link
-                href="/#sobre-nosotros"
+                href="/#about-us"
                 className="text-white hover:text-orange-400 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Nosotros
+                About Us
               </Link>
               <Link
                 href="/#costa-rica"
@@ -79,7 +79,7 @@ export default function Navbar() {
                 className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full font-semibold transition-colors text-center"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Ver Tours
+                View Tours
               </Link>
             </div>
           </div>

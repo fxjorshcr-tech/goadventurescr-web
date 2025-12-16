@@ -1,8 +1,8 @@
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
 import Link from 'next/link';
 import { tours } from '../../data/tours';
 import QuoteForm from '../../components/QuoteForm';
+import ImageSlider from '../../components/ImageSlider';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: PageProps) {
 
   if (!tour) {
     return {
-      title: 'Tour no encontrado | GoAdventuresCR',
+      title: 'Tour not found | GoAdventuresCR',
     };
   }
 
@@ -67,7 +67,7 @@ export default async function TourDetailPage({ params }: PageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex items-center gap-2 text-sm">
             <Link href="/" className="text-gray-500 hover:text-orange-500">
-              Inicio
+              Home
             </Link>
             <span className="text-gray-400">/</span>
             <Link href="/tours" className="text-gray-500 hover:text-orange-500">
@@ -79,17 +79,10 @@ export default async function TourDetailPage({ params }: PageProps) {
         </div>
       </div>
 
-      {/* Hero Image */}
-      <section className="relative h-[40vh] md:h-[50vh]">
-        <Image
-          src={tour.image}
-          alt={tour.title}
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 p-8">
+      {/* Hero Image Slider */}
+      <section className="relative">
+        <ImageSlider images={tour.images} title={tour.title} />
+        <div className="absolute bottom-0 left-0 right-0 p-8 z-20">
           <div className="max-w-7xl mx-auto">
             <span className="inline-block bg-orange-500 text-white text-sm font-semibold px-4 py-1 rounded-full mb-4">
               {tour.category}
@@ -122,7 +115,7 @@ export default async function TourDetailPage({ params }: PageProps) {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">Duración</p>
+                    <p className="text-sm text-gray-500">Duration</p>
                     <p className="font-semibold text-green-900">{tour.duration}</p>
                   </div>
                 </div>
@@ -133,8 +126,8 @@ export default async function TourDetailPage({ params }: PageProps) {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">Grupo máximo</p>
-                    <p className="font-semibold text-green-900">{tour.maxParticipants} personas</p>
+                    <p className="text-sm text-gray-500">Max Group</p>
+                    <p className="font-semibold text-green-900">{tour.maxParticipants} people</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -145,7 +138,7 @@ export default async function TourDetailPage({ params }: PageProps) {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">Ubicación</p>
+                    <p className="text-sm text-gray-500">Location</p>
                     <p className="font-semibold text-green-900">{tour.location}</p>
                   </div>
                 </div>
@@ -156,15 +149,15 @@ export default async function TourDetailPage({ params }: PageProps) {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">Idiomas</p>
-                    <p className="font-semibold text-green-900">Español, Inglés</p>
+                    <p className="text-sm text-gray-500">Languages</p>
+                    <p className="font-semibold text-green-900">Spanish, English</p>
                   </div>
                 </div>
               </div>
 
               {/* About */}
               <div>
-                <h2 className="text-2xl font-bold text-green-900 mb-4">Acerca de esta experiencia</h2>
+                <h2 className="text-2xl font-bold text-green-900 mb-4">About this experience</h2>
                 <div className="prose prose-lg text-gray-600 whitespace-pre-line">
                   {tour.longDescription}
                 </div>
@@ -172,7 +165,7 @@ export default async function TourDetailPage({ params }: PageProps) {
 
               {/* Highlights */}
               <div>
-                <h2 className="text-2xl font-bold text-green-900 mb-4">Aspectos destacados</h2>
+                <h2 className="text-2xl font-bold text-green-900 mb-4">Highlights</h2>
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {tour.highlights.map((highlight, index) => (
                     <li key={index} className="flex items-start gap-3">
@@ -187,7 +180,7 @@ export default async function TourDetailPage({ params }: PageProps) {
 
               {/* Included */}
               <div>
-                <h2 className="text-2xl font-bold text-green-900 mb-4">Servicios incluidos</h2>
+                <h2 className="text-2xl font-bold text-green-900 mb-4">What&apos;s included</h2>
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {tour.included.map((item, index) => (
                     <li key={index} className="flex items-center gap-3">
@@ -202,7 +195,7 @@ export default async function TourDetailPage({ params }: PageProps) {
 
               {/* Itinerary */}
               <div>
-                <h2 className="text-2xl font-bold text-green-900 mb-4">Itinerario</h2>
+                <h2 className="text-2xl font-bold text-green-900 mb-4">Itinerary</h2>
                 <div className="space-y-4">
                   {tour.itinerary.map((step, index) => (
                     <div key={index} className="flex gap-4">
@@ -219,20 +212,20 @@ export default async function TourDetailPage({ params }: PageProps) {
 
               {/* Cancellation Policy */}
               <div className="bg-gray-50 rounded-2xl p-6">
-                <h2 className="text-xl font-bold text-green-900 mb-3">Política de cancelación</h2>
+                <h2 className="text-xl font-bold text-green-900 mb-3">Cancellation Policy</h2>
                 <p className="text-gray-600">{tour.cancellationPolicy}</p>
                 <ul className="mt-4 space-y-2 text-sm text-gray-600">
                   <li className="flex items-start gap-2">
                     <svg className="w-5 h-5 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                     </svg>
-                    Si cancelas menos de 24 horas antes, no se devolverá el importe abonado.
+                    If you cancel less than 24 hours before, no refund will be issued.
                   </li>
                   <li className="flex items-start gap-2">
                     <svg className="w-5 h-5 text-orange-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                     </svg>
-                    La hora límite se basa en la hora local del lugar donde se realiza la experiencia.
+                    The deadline is based on the local time of the experience location.
                   </li>
                 </ul>
               </div>
@@ -250,16 +243,16 @@ export default async function TourDetailPage({ params }: PageProps) {
       <section className="py-12 bg-green-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
-            ¿Buscas más aventuras?
+            Looking for more adventures?
           </h2>
           <p className="text-gray-300 mb-8">
-            Explora todas nuestras experiencias en Guanacaste
+            Explore all our experiences in Guanacaste
           </p>
           <Link
             href="/tours"
             className="inline-block bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full font-bold transition-colors"
           >
-            Ver todos los tours
+            View all tours
           </Link>
         </div>
       </section>
