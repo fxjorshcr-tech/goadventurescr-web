@@ -1,17 +1,25 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-green-900/95 backdrop-blur-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent pt-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-2xl font-bold text-white hover:text-orange-400 transition-colors">
-            goadventurescr
+        <div className="flex items-center justify-between">
+          <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+            <Image
+              src="https://mmlbslwljvmscbgsqkkq.supabase.co/storage/v1/object/public/Fotos/WhatsApp%20Image%202025-12-15%20at%2010.26.40%20PM.png"
+              alt="Go Adventures CR Logo"
+              width={250}
+              height={100}
+              className="h-24 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop Menu */}

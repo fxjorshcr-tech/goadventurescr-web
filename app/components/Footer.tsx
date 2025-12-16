@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -7,7 +8,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Logo and description */}
           <div>
-            <h3 className="text-2xl font-bold text-orange-400 mb-4">goadventurescr</h3>
+            <Image
+              src="https://mmlbslwljvmscbgsqkkq.supabase.co/storage/v1/object/public/Fotos/WhatsApp%20Image%202025-12-15%20at%2010.26.40%20PM.png"
+              alt="Go Adventures CR Logo"
+              width={180}
+              height={70}
+              className="h-16 w-auto mb-4"
+            />
             <p className="text-gray-300 mb-4">
               Your gateway to the best adventures in Guanacaste, Costa Rica.
               Unique experiences that connect with nature and local culture.
