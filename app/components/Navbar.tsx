@@ -17,7 +17,7 @@ export default function Navbar() {
               alt="Go Adventures CR Logo"
               width={250}
               height={100}
-              className="h-24 w-auto"
+              className="h-16 w-auto md:h-24"
               priority
             />
           </Link>
@@ -58,40 +58,44 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden pb-4">
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            isMenuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
+          }`}
+        >
+          <div className="bg-green-900/95 backdrop-blur-sm rounded-lg mt-4 p-4">
             <div className="flex flex-col space-y-4">
               <Link
                 href="/"
-                className="text-white hover:text-orange-400 transition-colors"
+                className="text-white hover:text-orange-400 transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </Link>
               <Link
                 href="/#about-us"
-                className="text-white hover:text-orange-400 transition-colors"
+                className="text-white hover:text-orange-400 transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 About Us
               </Link>
               <Link
                 href="/#costa-rica"
-                className="text-white hover:text-orange-400 transition-colors"
+                className="text-white hover:text-orange-400 transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Costa Rica
               </Link>
               <Link
                 href="/tours"
-                className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full font-semibold transition-colors text-center"
+                className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full font-semibold transition-colors text-center"
                 onClick={() => setIsMenuOpen(false)}
               >
                 View Tours
               </Link>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </nav>
   );

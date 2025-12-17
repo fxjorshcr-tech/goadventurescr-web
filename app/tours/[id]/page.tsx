@@ -61,33 +61,35 @@ export default async function TourDetailPage({ params }: PageProps) {
   };
 
   return (
-    <main className="pt-16">
-      {/* Breadcrumb */}
-      <div className="bg-gray-50 py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="flex items-center gap-2 text-sm">
-            <Link href="/" className="text-gray-500 hover:text-orange-500">
-              Home
-            </Link>
-            <span className="text-gray-400">/</span>
-            <Link href="/tours" className="text-gray-500 hover:text-orange-500">
-              Tours
-            </Link>
-            <span className="text-gray-400">/</span>
-            <span className="text-green-900 font-medium">{tour.title}</span>
-          </nav>
-        </div>
-      </div>
-
+    <main>
       {/* Hero Image Slider */}
       <section className="relative">
         <ImageSlider images={tour.images} title={tour.title} />
-        <div className="absolute bottom-0 left-0 right-0 p-8 z-20">
+
+        {/* Breadcrumb - positioned at top */}
+        <div className="absolute top-0 left-0 right-0 pt-24 md:pt-28 z-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav className="flex items-center gap-2 text-sm bg-black/30 backdrop-blur-sm rounded-full px-4 py-2 w-fit">
+              <Link href="/" className="text-white/80 hover:text-orange-400 transition-colors">
+                Home
+              </Link>
+              <span className="text-white/50">/</span>
+              <Link href="/tours" className="text-white/80 hover:text-orange-400 transition-colors">
+                Tours
+              </Link>
+              <span className="text-white/50">/</span>
+              <span className="text-orange-400 font-medium">{tour.title}</span>
+            </nav>
+          </div>
+        </div>
+
+        {/* Tour info overlay at bottom */}
+        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-20">
           <div className="max-w-7xl mx-auto">
             <span className="inline-block bg-orange-500 text-white text-sm font-semibold px-4 py-1 rounded-full mb-4">
               {tour.category}
             </span>
-            <h1 className="text-3xl md:text-5xl font-bold text-white mb-2">
+            <h1 className="text-2xl md:text-5xl font-bold text-white mb-2">
               {tour.title}
             </h1>
             <div className="flex items-center gap-4 text-white">
