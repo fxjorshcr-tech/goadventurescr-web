@@ -106,6 +106,96 @@ export default function ToursPage() {
         </div>
       </section>
 
+      {/* About Guanacaste */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-green-900 mb-4">
+              Discover <span className="text-orange-500">Guanacaste</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              The golden coast of Costa Rica, where adventure meets paradise
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Climate */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm">
+              <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mb-4">
+                <svg className="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-bold text-green-900 mb-2">Tropical Climate</h3>
+              <p className="text-gray-600 text-sm">
+                Enjoy 300+ sunny days per year with temperatures between 25-35°C.
+                Dry season from December to April, perfect for outdoor adventures.
+              </p>
+            </div>
+
+            {/* Airport */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm">
+              <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mb-4">
+                <svg className="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3l14 9-14 9V3z" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-bold text-green-900 mb-2">Daniel Oduber Airport</h3>
+              <p className="text-gray-600 text-sm">
+                International airport (LIR) in Liberia with direct flights from USA,
+                Canada and Europe. Just 30-60 min from major beach destinations.
+              </p>
+            </div>
+
+            {/* Beaches */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm">
+              <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mb-4">
+                <svg className="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-bold text-green-900 mb-2">World-Class Beaches</h3>
+              <p className="text-gray-600 text-sm">
+                From Tamarindo to Papagayo, discover pristine beaches perfect for
+                surfing, snorkeling, and relaxing in Costa Rica&apos;s Pacific coast.
+              </p>
+            </div>
+
+            {/* Blue Zone */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm">
+              <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mb-4">
+                <svg className="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-bold text-green-900 mb-2">Blue Zone</h3>
+              <p className="text-gray-600 text-sm">
+                Nicoya Peninsula is one of only 5 Blue Zones in the world, where
+                people live longer, healthier lives. Discover the secrets of longevity.
+              </p>
+            </div>
+          </div>
+
+          {/* Additional Info */}
+          <div className="mt-12 bg-green-900 rounded-2xl p-8 text-white">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+              <div>
+                <p className="text-4xl font-bold text-orange-400 mb-2">5%</p>
+                <p className="text-gray-300">of world&apos;s biodiversity in Costa Rica</p>
+              </div>
+              <div>
+                <p className="text-4xl font-bold text-orange-400 mb-2">25+</p>
+                <p className="text-gray-300">National parks and reserves</p>
+              </div>
+              <div>
+                <p className="text-4xl font-bold text-orange-400 mb-2">Pura Vida</p>
+                <p className="text-gray-300">The Costa Rican way of life</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-16 bg-green-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
