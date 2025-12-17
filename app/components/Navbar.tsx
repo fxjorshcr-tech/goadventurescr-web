@@ -24,11 +24,14 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-white hover:text-orange-400 transition-colors">
+            <Link href="/" className="text-white hover:text-orange-400 transition-colors font-semibold">
               Home
             </Link>
-            <Link href="/about" className="text-white hover:text-orange-400 transition-colors">
+            <Link href="/about" className="text-white hover:text-orange-400 transition-colors font-semibold">
               About Us
+            </Link>
+            <Link href="/contact" className="text-white hover:text-orange-400 transition-colors font-semibold">
+              Contact
             </Link>
             <Link
               href="/tours"
@@ -64,17 +67,24 @@ export default function Navbar() {
             <div className="flex flex-col space-y-4">
               <Link
                 href="/"
-                className="text-white hover:text-orange-400 transition-colors py-2"
+                className="text-white hover:text-orange-400 transition-colors py-2 font-semibold"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </Link>
               <Link
                 href="/about"
-                className="text-white hover:text-orange-400 transition-colors py-2"
+                className="text-white hover:text-orange-400 transition-colors py-2 font-semibold"
                 onClick={() => setIsMenuOpen(false)}
               >
                 About Us
+              </Link>
+              <Link
+                href="/contact"
+                className="text-white hover:text-orange-400 transition-colors py-2 font-semibold"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Contact
               </Link>
               <Link
                 href="/tours"
