@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { tours } from '../data/tours';
 import TourCard from '../components/TourCard';
 
@@ -8,19 +9,25 @@ export const metadata = {
 
 export default function ToursPage() {
   return (
-    <main className="pt-16">
+    <main>
       {/* Hero Section */}
-      <section className="bg-green-950 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Our <span className="text-orange-400">Tours</span>
-            </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Authentic experiences designed to connect you with the nature,
-              culture and adventure of Costa Rica
-            </p>
-          </div>
+      <section className="relative min-h-[50vh] md:min-h-[60vh] flex items-center justify-center">
+        <Image
+          src="https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/cascada1.png"
+          alt="Costa Rica Tours"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-green-950/80 via-green-950/60 to-green-950/90" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+            Our <span className="text-orange-400">Tours</span>
+          </h1>
+          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
+            Authentic experiences designed to connect you with the nature,
+            culture and adventure of Costa Rica
+          </p>
         </div>
       </section>
 
