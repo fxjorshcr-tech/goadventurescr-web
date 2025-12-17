@@ -66,23 +66,6 @@ export default async function TourDetailPage({ params }: PageProps) {
       <section className="relative">
         <ImageSlider images={tour.images} title={tour.title} />
 
-        {/* Breadcrumb - positioned at top */}
-        <div className="absolute top-0 left-0 right-0 pt-24 md:pt-28 z-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <nav className="flex items-center gap-2 text-sm bg-black/30 backdrop-blur-sm rounded-full px-4 py-2 w-fit">
-              <Link href="/" className="text-white/80 hover:text-orange-400 transition-colors">
-                Home
-              </Link>
-              <span className="text-white/50">/</span>
-              <Link href="/tours" className="text-white/80 hover:text-orange-400 transition-colors">
-                Tours
-              </Link>
-              <span className="text-white/50">/</span>
-              <span className="text-orange-400 font-medium">{tour.title}</span>
-            </nav>
-          </div>
-        </div>
-
         {/* Tour info overlay at bottom */}
         <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-20">
           <div className="max-w-7xl mx-auto">
