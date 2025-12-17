@@ -27,11 +27,8 @@ export default function Navbar() {
             <Link href="/" className="text-white hover:text-orange-400 transition-colors">
               Home
             </Link>
-            <Link href="/#about-us" className="text-white hover:text-orange-400 transition-colors">
+            <Link href="/about" className="text-white hover:text-orange-400 transition-colors">
               About Us
-            </Link>
-            <Link href="/#costa-rica" className="text-white hover:text-orange-400 transition-colors">
-              Costa Rica
             </Link>
             <Link
               href="/tours"
@@ -73,18 +70,11 @@ export default function Navbar() {
                 Home
               </Link>
               <Link
-                href="/#about-us"
+                href="/about"
                 className="text-white hover:text-orange-400 transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 About Us
-              </Link>
-              <Link
-                href="/#costa-rica"
-                className="text-white hover:text-orange-400 transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Costa Rica
               </Link>
               <Link
                 href="/tours"
