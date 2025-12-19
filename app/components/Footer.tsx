@@ -81,15 +81,15 @@ export default function Footer() {
             href="https://maxdigitalcr.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center gap-3 text-base text-gray-300 hover:text-orange-400 transition-colors"
+            className="group mt-4 inline-flex items-center justify-center gap-3 text-base text-gray-300 hover:text-orange-400 transition-all duration-300"
           >
             Powered by
             <Image
               src="https://mmlbslwljvmscbgsqkkq.supabase.co/storage/v1/object/public/Fotos/logo-max-transparente.png"
               alt="MAXDIGITALCR"
-              width={180}
-              height={50}
-              className="h-10 w-auto"
+              width={200}
+              height={60}
+              className="h-12 w-auto opacity-80 group-hover:opacity-100 group-hover:brightness-125 transition-all duration-300"
             />
           </a>
         </div>
