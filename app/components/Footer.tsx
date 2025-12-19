@@ -80,12 +80,12 @@ export default function Footer() {
           <p className="mt-2 text-sm">
             Powered by{' '}
             <a
-              href="https://fxjorsh.dev"
+              href="https://maxdigitalcr.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-orange-400 hover:text-orange-300 transition-colors"
             >
-              fxjorsh.dev
+              MAXDIGITALCR
             </a>
           </p>
         </div>
