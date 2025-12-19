@@ -77,17 +77,21 @@ export default function Footer() {
 
         <div className="border-t border-green-800 mt-8 pt-8 text-center text-gray-400">
           <p>&copy; {new Date().getFullYear()} GoAdventuresCR. All rights reserved.</p>
-          <p className="mt-2 text-sm">
-            Powered by{' '}
-            <a
-              href="https://maxdigitalcr.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-orange-400 hover:text-orange-300 transition-colors"
-            >
-              MAXDIGITALCR
-            </a>
-          </p>
+          <a
+            href="https://maxdigitalcr.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2 inline-flex items-center gap-2 text-sm text-gray-400 hover:text-orange-400 transition-colors"
+          >
+            Powered by
+            <Image
+              src="https://mmlbslwljvmscbgsqkkq.supabase.co/storage/v1/object/public/Fotos/logo-max-transparente.png"
+              alt="MAXDIGITALCR"
+              width={120}
+              height={30}
+              className="h-5 w-auto"
+            />
+          </a>
         </div>
       </div>
     </footer>
