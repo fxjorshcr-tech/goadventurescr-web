@@ -89,7 +89,7 @@ export default function Footer() {
               alt="MAXDIGITALCR"
               width={200}
               height={60}
-              className="h-12 w-auto opacity-80 group-hover:opacity-100 group-hover:brightness-125 transition-all duration-300"
+              className="h-8 w-auto invert opacity-70 group-hover:opacity-100 transition-all duration-300"
             />
           </a>
         </div>
