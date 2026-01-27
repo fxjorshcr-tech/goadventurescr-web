@@ -28,7 +28,7 @@ export default function ImageSlider({ images, title }: ImageSliderProps) {
   };
 
   return (
-    <div className="relative h-[70vh] md:h-[85vh] w-full overflow-hidden">
+    <div className="relative h-[50vh] md:h-[60vh] w-full overflow-hidden">
       {/* Images */}
       {images.map((image, index) => (
         <div

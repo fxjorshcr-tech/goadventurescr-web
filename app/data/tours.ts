@@ -120,9 +120,9 @@ Let's embark on a journey through time in Nicoya, where echoes of the past reson
     duration: "5-6 hours",
     rating: 5.0,
     reviewCount: 1,
-    image: "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/artesania1.png",
+    image: "https://mmlbslwljvmscbgsqkkq.supabase.co/storage/v1/object/sign/PRUEBAS/artesanias-guatil.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iZmNkZjM3My00NzkzLTRhYjQtYmRhOC04OWY1ZmNiMjdhMzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQUlVFQkFTL2FydGVzYW5pYXMtZ3VhdGlsLmpwZyIsImlhdCI6MTc2OTQ4NDU2NiwiZXhwIjoyNDAwMjA0NTY2fQ.fWDQTVn9MzkQy8ltdUg0Wf4cwdJnDZKQ7LwAMLWSUhs",
     images: [
-      "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/artesania1.png",
+      "https://mmlbslwljvmscbgsqkkq.supabase.co/storage/v1/object/sign/PRUEBAS/artesanias-guatil.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iZmNkZjM3My00NzkzLTRhYjQtYmRhOC04OWY1ZmNiMjdhMzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQUlVFQkFTL2FydGVzYW5pYXMtZ3VhdGlsLmpwZyIsImlhdCI6MTc2OTQ4NDU2NiwiZXhwIjoyNDAwMjA0NTY2fQ.fWDQTVn9MzkQy8ltdUg0Wf4cwdJnDZKQ7LwAMLWSUhs",
       "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/artesania2.png",
       "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/artesania3.png"
     ],
