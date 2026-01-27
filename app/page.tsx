@@ -70,57 +70,57 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Guanacaste Section - Full width image */}
-      <section className="relative min-h-[500px] md:min-h-[600px] flex items-center">
-        <div className="absolute inset-0">
-          <Image
-            src="https://mmlbslwljvmscbgsqkkq.supabase.co/storage/v1/object/sign/PRUEBAS/playas-guanacaste-costa-rica.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iZmNkZjM3My00NzkzLTRhYjQtYmRhOC04OWY1ZmNiMjdhMzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQUlVFQkFTL3BsYXlhcy1ndWFuYWNhc3RlLWNvc3RhLXJpY2Eud2VicCIsImlhdCI6MTc2OTQ4NDIzNCwiZXhwIjoyNDAwMjA0MjM0fQ.4WxZg6RFmkDwD_fxJ8PfZlJltkihl4zmVMKaC_y_qh0"
-            alt="Beautiful beaches of Guanacaste, Costa Rica"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-green-950/85 via-green-950/70 to-green-950/40" />
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="max-w-xl">
-            <h3 className="text-3xl md:text-5xl font-bold mb-6 text-white">
-              <span className="text-orange-400">Guanacaste</span>, Your Destination
-            </h3>
-            <p className="text-lg text-gray-200 mb-4">
-              One of the most beautiful provinces in Costa Rica, known for its
-              dream beaches, rich cowboy culture and unique biodiversity.
-            </p>
-            <p className="text-lg text-gray-200 mb-6">
-              The Nicoya Peninsula is one of the 7 Blue Zones in the world,
-              where longevity and quality of life are exceptional.
-            </p>
-            <ul className="space-y-2">
-              <li className="flex items-center gap-3 text-white">
-                <svg className="w-5 h-5 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span>Paradise beaches</span>
-              </li>
-              <li className="flex items-center gap-3 text-white">
-                <svg className="w-5 h-5 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span>Blue Zone of longevity</span>
-              </li>
-              <li className="flex items-center gap-3 text-white">
-                <svg className="w-5 h-5 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span>Culture and traditions</span>
-              </li>
-              <li className="flex items-center gap-3 text-white">
-                <svg className="w-5 h-5 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span>Adventure and ecotourism</span>
-              </li>
-            </ul>
+      {/* Guanacaste Section */}
+      <section className="py-16 bg-green-950">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+                <span className="text-orange-400">Guanacaste</span>, Your Destination
+              </h3>
+              <p className="text-lg text-gray-300 mb-4">
+                One of the most beautiful provinces in Costa Rica, known for its
+                dream beaches, rich cowboy culture and unique biodiversity.
+              </p>
+              <p className="text-lg text-gray-300 mb-6">
+                The Nicoya Peninsula is one of the 7 Blue Zones in the world,
+                where longevity and quality of life are exceptional.
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-center gap-3 text-white">
+                  <svg className="w-5 h-5 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>Paradise beaches</span>
+                </li>
+                <li className="flex items-center gap-3 text-white">
+                  <svg className="w-5 h-5 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>Blue Zone of longevity</span>
+                </li>
+                <li className="flex items-center gap-3 text-white">
+                  <svg className="w-5 h-5 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>Culture and traditions</span>
+                </li>
+                <li className="flex items-center gap-3 text-white">
+                  <svg className="w-5 h-5 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>Adventure and ecotourism</span>
+                </li>
+              </ul>
+            </div>
+            <div className="relative h-[350px] md:h-[450px] rounded-2xl overflow-hidden">
+              <Image
+                src="https://mmlbslwljvmscbgsqkkq.supabase.co/storage/v1/object/sign/PRUEBAS/playas-guanacaste-costa-rica.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iZmNkZjM3My00NzkzLTRhYjQtYmRhOC04OWY1ZmNiMjdhMzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQUlVFQkFTL3BsYXlhcy1ndWFuYWNhc3RlLWNvc3RhLXJpY2Eud2VicCIsImlhdCI6MTc2OTQ4NDIzNCwiZXhwIjoyNDAwMjA0MjM0fQ.4WxZg6RFmkDwD_fxJ8PfZlJltkihl4zmVMKaC_y_qh0"
+                alt="Beautiful beaches of Guanacaste, Costa Rica"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
