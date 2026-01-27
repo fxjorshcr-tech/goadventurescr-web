@@ -122,9 +122,9 @@ Let's embark on a journey through time in Nicoya, where echoes of the past reson
     reviewCount: 1,
     image: "https://mmlbslwljvmscbgsqkkq.supabase.co/storage/v1/object/sign/PRUEBAS/artesanias-guatil.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iZmNkZjM3My00NzkzLTRhYjQtYmRhOC04OWY1ZmNiMjdhMzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQUlVFQkFTL2FydGVzYW5pYXMtZ3VhdGlsLmpwZyIsImlhdCI6MTc2OTQ4NDU2NiwiZXhwIjoyNDAwMjA0NTY2fQ.fWDQTVn9MzkQy8ltdUg0Wf4cwdJnDZKQ7LwAMLWSUhs",
     images: [
-      "https://mmlbslwljvmscbgsqkkq.supabase.co/storage/v1/object/sign/PRUEBAS/artesanias-guatil.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iZmNkZjM3My00NzkzLTRhYjQtYmRhOC04OWY1ZmNiMjdhMzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQUlVFQkFTL2FydGVzYW5pYXMtZ3VhdGlsLmpwZyIsImlhdCI6MTc2OTQ4NDU2NiwiZXhwIjoyNDAwMjA0NTY2fQ.fWDQTVn9MzkQy8ltdUg0Wf4cwdJnDZKQ7LwAMLWSUhs",
-      "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/artesania2.png",
-      "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/artesania3.png"
+      "https://mmlbslwljvmscbgsqkkq.supabase.co/storage/v1/object/sign/PRUEBAS/gua-blue-zone-pic.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iZmNkZjM3My00NzkzLTRhYjQtYmRhOC04OWY1ZmNiMjdhMzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQUlVFQkFTL2d1YS1ibHVlLXpvbmUtcGljLmpwZyIsImlhdCI6MTc2OTQ4NTY2OCwiZXhwIjoyNDAwMjA1NjY4fQ.tJh4CcZLxhVQiFZs-c2xOMFxMINg83Ql1gGZjKZ3nKw",
+      "https://mmlbslwljvmscbgsqkkq.supabase.co/storage/v1/object/sign/PRUEBAS/gua-iglesia-nicoya.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iZmNkZjM3My00NzkzLTRhYjQtYmRhOC04OWY1ZmNiMjdhMzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQUlVFQkFTL2d1YS1pZ2xlc2lhLW5pY295YS5qcGciLCJpYXQiOjE3Njk0ODU2ODksImV4cCI6MjQwMDIwNTY4OX0.trfB6ePhvHMHZio-qcwfgMZU_-jQjAqTQ4MQA6OdOxc",
+      "https://mmlbslwljvmscbgsqkkq.supabase.co/storage/v1/object/sign/PRUEBAS/gua-Receta-Rosquillas-guanacaste.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iZmNkZjM3My00NzkzLTRhYjQtYmRhOC04OWY1ZmNiMjdhMzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQUlVFQkFTL2d1YS1SZWNldGEtUm9zcXVpbGxhcy1ndWFuYWNhc3RlLmpwZyIsImlhdCI6MTc2OTQ4NTcwMSwiZXhwIjoyNDAwMjA1NzAxfQ.OLPJSky7LvlxeMf5CTYV3K2HC_zI7Wvp6RcTgIvYUpc"
     ],
     category: "Private & Luxury",
     highlights: [
