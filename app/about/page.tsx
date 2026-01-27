@@ -12,7 +12,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="relative min-h-[50vh] md:min-h-[60vh] flex items-center justify-center">
         <Image
-          src="https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/ave-costa-rica.jpeg"
+          src="https://mmlbslwljvmscbgsqkkq.supabase.co/storage/v1/object/sign/PRUEBAS/Gemini_Generated_Image_enypsmenypsmenyp.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iZmNkZjM3My00NzkzLTRhYjQtYmRhOC04OWY1ZmNiMjdhMzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQUlVFQkFTL0dlbWluaV9HZW5lcmF0ZWRfSW1hZ2VfZW55cHNtZW55cHNtZW55cC5wbmciLCJpYXQiOjE3Njk0ODQ4NTIsImV4cCI6MjQwMDIwNDg1Mn0.f3fXeUSLmeJGITsnG0RuOyU0cICv-73Urk-bOrkrWE4"
           alt="About GoAdventuresCR"
           fill
           className="object-cover"
