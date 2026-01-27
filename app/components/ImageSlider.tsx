@@ -28,12 +28,12 @@ export default function ImageSlider({ images, title }: ImageSliderProps) {
   };
 
   return (
-    <div className="relative h-[50vh] md:h-[60vh] w-full overflow-hidden">
+    <div className="relative h-[40vh] md:h-[50vh] w-full overflow-hidden bg-gray-100">
       {/* Images */}
       {images.map((image, index) => (
         <div
           key={index}
-          className={`absolute inset-0 transition-opacity duration-500 ${
+          className={`absolute inset-0 flex items-center justify-center transition-opacity duration-500 ${
             index === currentIndex ? 'opacity-100' : 'opacity-0'
           }`}
         >
@@ -41,7 +41,7 @@ export default function ImageSlider({ images, title }: ImageSliderProps) {
             src={image}
             alt={`${title} - Image ${index + 1}`}
             fill
-            className="object-cover"
+            className="object-contain"
             priority={index === 0}
           />
         </div>

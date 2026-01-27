@@ -71,9 +71,10 @@ export default function Home() {
       </section>
 
       {/* Guanacaste Section */}
-      <section className="py-16 bg-green-950">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="bg-green-950 rounded-3xl p-8 md:p-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h3 className="text-3xl md:text-4xl font-bold mb-6 text-white">
                 <span className="text-orange-400">Guanacaste</span>, Your Destination
@@ -113,13 +114,14 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-            <div className="relative h-[350px] md:h-[450px] rounded-2xl overflow-hidden">
+            <div className="relative h-[300px] md:h-[350px] rounded-2xl overflow-hidden">
               <Image
                 src="https://mmlbslwljvmscbgsqkkq.supabase.co/storage/v1/object/sign/PRUEBAS/playas-guanacaste-costa-rica.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iZmNkZjM3My00NzkzLTRhYjQtYmRhOC04OWY1ZmNiMjdhMzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQUlVFQkFTL3BsYXlhcy1ndWFuYWNhc3RlLWNvc3RhLXJpY2Eud2VicCIsImlhdCI6MTc2OTQ4NDIzNCwiZXhwIjoyNDAwMjA0MjM0fQ.4WxZg6RFmkDwD_fxJ8PfZlJltkihl4zmVMKaC_y_qh0"
                 alt="Beautiful beaches of Guanacaste, Costa Rica"
                 fill
                 className="object-cover"
               />
+            </div>
             </div>
           </div>
         </div>
