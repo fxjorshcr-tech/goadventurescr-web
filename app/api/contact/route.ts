@@ -66,7 +66,7 @@ export async function POST(request: NextRequest) {
       `;
     }
 
-    // Send email with Resend
+    // Send email to GoAdventuresCR
     const { error } = await resend.emails.send({
       from: 'GoAdventuresCR <noreply@goadventurescr.com>',
       to: [process.env.CONTACT_EMAIL || 'info@goadventurescr.com'],
@@ -82,6 +82,44 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       );
     }
+
+    // Send confirmation email to customer
+    const confirmationBody = formType === 'quote'
+      ? `
+        <h2>Thank you for your quote request!</h2>
+        <p>Hi ${name},</p>
+        <p>We have received your quote request for <strong>${tourName}</strong>.</p>
+        <p>Our team will review your request and get back to you within 24 hours with a personalized quote.</p>
+        <hr>
+        <p><strong>Your request details:</strong></p>
+        <p>Tour: ${tourName}</p>
+        <p>Number of Guests: ${guests}</p>
+        <p>Preferred Date: ${date || 'Not specified'}</p>
+        ${message ? `<p>Message: ${message}</p>` : ''}
+        <hr>
+        <p>If you have any questions, feel free to reply to this email or contact us at info@goadventurescr.com</p>
+        <p>Best regards,<br>The GoAdventuresCR Team</p>
+      `
+      : `
+        <h2>Thank you for contacting us!</h2>
+        <p>Hi ${name},</p>
+        <p>We have received your message and will respond within 24 hours.</p>
+        <hr>
+        <p><strong>Your message:</strong></p>
+        <p>${message}</p>
+        <hr>
+        <p>If you have any urgent questions, feel free to contact us at info@goadventurescr.com</p>
+        <p>Best regards,<br>The GoAdventuresCR Team</p>
+      `;
+
+    await resend.emails.send({
+      from: 'GoAdventuresCR <noreply@goadventurescr.com>',
+      to: [email],
+      subject: formType === 'quote'
+        ? `Your quote request for ${tourName} - GoAdventuresCR`
+        : 'We received your message - GoAdventuresCR',
+      html: confirmationBody,
+    });
 
     return NextResponse.json({ success: true });
   } catch (error) {
