@@ -116,7 +116,7 @@ export default function ToursPage() {
             We&apos;re here to help you plan your perfect adventure
           </p>
           <a
-            href="mailto:info@goadventurescr.com"
+            href="/contact"
             className="inline-block bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full font-bold text-lg transition-colors"
           >
             Contact Us
