@@ -28,7 +28,7 @@ export default function ImageSlider({ images, title }: ImageSliderProps) {
   };
 
   return (
-    <div className="relative h-[50vh] md:h-[60vh] w-full overflow-hidden">
+    <div className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden">
       {/* Images */}
       {images.map((image, index) => (
         <div
@@ -41,7 +41,7 @@ export default function ImageSlider({ images, title }: ImageSliderProps) {
             src={image}
             alt={`${title} - Image ${index + 1}`}
             fill
-            className="object-cover"
+            className="object-cover object-top"
             priority={index === 0}
           />
         </div>
