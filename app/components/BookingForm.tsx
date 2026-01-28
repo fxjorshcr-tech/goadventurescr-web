@@ -1,7 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
+import { DayPicker } from 'react-day-picker';
+import { format } from 'date-fns';
+import { enUS } from 'date-fns/locale';
 
 interface BookingFormProps {
   tourName: string;
@@ -16,22 +19,36 @@ export default function BookingForm({ tourName, tourPrice, tourId }: BookingForm
     name: '',
     email: '',
     guests: 1,
-    date: '',
+    date: undefined as Date | undefined,
   });
   const [isFormValid, setIsFormValid] = useState(false);
   const [showPayment, setShowPayment] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [orderId, setOrderId] = useState('');
+  const [showCalendar, setShowCalendar] = useState(false);
+  const calendarRef = useRef<HTMLDivElement>(null);
 
   const totalPrice = tourPrice * formData.guests;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
   useEffect(() => {
     const isValid = formData.name.trim() !== '' &&
                     formData.email.trim() !== '' &&
                     formData.email.includes('@') &&
-                    formData.date !== '';
+                    formData.date !== undefined;
     setIsFormValid(isValid);
   }, [formData]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (calendarRef.current && !calendarRef.current.contains(event.target as Node)) {
+        setShowCalendar(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const handleContinueToPayment = (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,11 +58,12 @@ export default function BookingForm({ tourName, tourPrice, tourId }: BookingForm
   };
 
   const getWhatsAppLink = () => {
+    const dateStr = formData.date ? format(formData.date, 'MMMM d, yyyy') : '[Preferred date]';
     const message = encodeURIComponent(
       `Hi! I'm interested in booking the "${tourName}" tour.\n\n` +
       `Name: ${formData.name || '[Your name]'}\n` +
       `Guests: ${formData.guests}\n` +
-      `Date: ${formData.date || '[Preferred date]'}\n` +
+      `Date: ${dateStr}\n` +
       `Total: $${totalPrice}\n\n` +
       `Can you help me with the reservation?`
     );
@@ -147,19 +165,59 @@ export default function BookingForm({ tourName, tourPrice, tourId }: BookingForm
             </select>
           </div>
 
-          <div>
-            <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-1">
+          {/* Modern Date Picker */}
+          <div className="relative" ref={calendarRef}>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
               Tour Date *
             </label>
-            <input
-              type="date"
-              id="date"
-              required
-              value={formData.date}
-              onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-              min={new Date().toISOString().split('T')[0]}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-colors"
-            />
+            <button
+              type="button"
+              onClick={() => setShowCalendar(!showCalendar)}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-colors bg-white text-left flex items-center justify-between"
+            >
+              <span className={formData.date ? 'text-gray-900' : 'text-gray-400'}>
+                {formData.date ? format(formData.date, 'EEEE, MMMM d, yyyy', { locale: enUS }) : 'Select a date'}
+              </span>
+              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </button>
+
+            {showCalendar && (
+              <div className="absolute z-50 mt-2 bg-white rounded-xl shadow-2xl border border-gray-200 p-4 left-0 right-0">
+                <DayPicker
+                  mode="single"
+                  selected={formData.date}
+                  onSelect={(date) => {
+                    setFormData({ ...formData, date });
+                    setShowCalendar(false);
+                  }}
+                  disabled={{ before: today }}
+                  locale={enUS}
+                  showOutsideDays
+                  classNames={{
+                    root: 'w-full',
+                    months: 'flex flex-col',
+                    month: 'space-y-4',
+                    month_caption: 'flex justify-center items-center px-2 mb-4',
+                    caption_label: 'text-lg font-semibold text-green-900',
+                    nav: 'flex gap-1 absolute top-4 right-4 left-4 justify-between',
+                    button_previous: 'p-2 rounded-full hover:bg-orange-100 transition-colors',
+                    button_next: 'p-2 rounded-full hover:bg-orange-100 transition-colors',
+                    month_grid: 'w-full border-collapse',
+                    weekdays: '',
+                    weekday: 'text-gray-500 font-medium text-sm py-2',
+                    week: '',
+                    day: 'p-0 text-center',
+                    day_button: 'w-10 h-10 mx-auto rounded-full hover:bg-orange-100 transition-colors text-sm font-medium cursor-pointer',
+                    selected: 'bg-orange-500 text-white hover:bg-orange-600',
+                    today: 'border-2 border-orange-500 font-bold',
+                    outside: 'text-gray-300',
+                    disabled: 'text-gray-300 cursor-not-allowed hover:bg-transparent',
+                  }}
+                />
+              </div>
+            )}
           </div>
 
           {/* Total Price Display */}
@@ -190,7 +248,7 @@ export default function BookingForm({ tourName, tourPrice, tourId }: BookingForm
               <p><span className="font-medium">Name:</span> {formData.name}</p>
               <p><span className="font-medium">Email:</span> {formData.email}</p>
               <p><span className="font-medium">Guests:</span> {formData.guests}</p>
-              <p><span className="font-medium">Date:</span> {new Date(formData.date).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+              <p><span className="font-medium">Date:</span> {formData.date && format(formData.date, 'EEEE, MMMM d, yyyy', { locale: enUS })}</p>
             </div>
             <div className="border-t border-gray-200 mt-3 pt-3 flex justify-between items-center">
               <span className="font-semibold text-green-900">Total</span>
@@ -221,10 +279,11 @@ export default function BookingForm({ tourName, tourPrice, tourId }: BookingForm
                 label: 'pay'
               }}
               createOrder={(data, actions) => {
+                const dateStr = formData.date ? format(formData.date, 'yyyy-MM-dd') : '';
                 return actions.order.create({
                   intent: 'CAPTURE',
                   purchase_units: [{
-                    description: `${tourName} - ${formData.guests} guest(s) on ${formData.date}`,
+                    description: `${tourName} - ${formData.guests} guest(s) on ${dateStr}`,
                     amount: {
                       currency_code: 'USD',
                       value: totalPrice.toString()
@@ -235,7 +294,7 @@ export default function BookingForm({ tourName, tourPrice, tourId }: BookingForm
                       name: formData.name,
                       email: formData.email,
                       guests: formData.guests,
-                      date: formData.date
+                      date: dateStr
                     })
                   }]
                 });
@@ -246,7 +305,6 @@ export default function BookingForm({ tourName, tourPrice, tourId }: BookingForm
                   console.log('Payment successful:', order);
                   setOrderId(order.id || data.orderID || '');
                   setPaymentSuccess(true);
-                  // Here you would typically send the order details to your backend
                 }
               }}
               onError={(err) => {
