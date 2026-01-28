@@ -17,17 +17,34 @@ export default function QuoteForm({ tourName, tourPrice }: QuoteFormProps) {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError('');
 
-    // Simulate submission - connect to your backend/API here
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          tourName,
+          formType: 'quote',
+        }),
+      });
 
-    console.log('Quote request:', { ...formData, tourName });
-    setSubmitted(true);
-    setIsSubmitting(false);
+      if (!response.ok) {
+        throw new Error('Failed to send request');
+      }
+
+      setSubmitted(true);
+    } catch {
+      setError('Failed to send request. Please try again or contact us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -133,6 +150,12 @@ export default function QuoteForm({ tourName, tourPrice }: QuoteFormProps) {
             placeholder="Any special requests?"
           />
         </div>
+
+        {error && (
+          <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-red-700 text-sm">
+            {error}
+          </div>
+        )}
 
         <button
           type="submit"
