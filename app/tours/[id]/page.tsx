@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { tours } from '../../data/tours';
-import QuoteForm from '../../components/QuoteForm';
+import BookingForm from '../../components/BookingForm';
 import ImageSlider from '../../components/ImageSlider';
 
 interface PageProps {
@@ -216,9 +216,9 @@ export default async function TourDetailPage({ params }: PageProps) {
               </div>
             </div>
 
-            {/* Sidebar - Quote Form */}
+            {/* Sidebar - Booking Form */}
             <div className="lg:col-span-1">
-              <QuoteForm tourName={tour.title} tourPrice={tour.price} />
+              <BookingForm tourName={tour.title} tourPrice={tour.price} tourId={tour.id} />
             </div>
           </div>
         </div>
