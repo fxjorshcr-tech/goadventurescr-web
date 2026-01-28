@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   try {
@@ -21,17 +23,6 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
-
-    // Create transporter with Zoho SMTP
-    const transporter = nodemailer.createTransport({
-      host: 'smtp.zoho.com',
-      port: 465,
-      secure: true,
-      auth: {
-        user: process.env.ZOHO_EMAIL,
-        pass: process.env.ZOHO_PASSWORD,
-      },
-    });
 
     // Build email content based on form type
     let emailSubject: string;
@@ -75,14 +66,22 @@ export async function POST(request: NextRequest) {
       `;
     }
 
-    // Send email
-    await transporter.sendMail({
-      from: process.env.ZOHO_EMAIL,
-      to: process.env.ZOHO_EMAIL,
+    // Send email with Resend
+    const { error } = await resend.emails.send({
+      from: 'GoAdventuresCR <onboarding@resend.dev>',
+      to: [process.env.CONTACT_EMAIL || 'info@goadventurescr.com'],
       replyTo: email,
       subject: emailSubject,
       html: emailBody,
     });
+
+    if (error) {
+      console.error('Resend error:', error);
+      return NextResponse.json(
+        { error: 'Failed to send message. Please try again later.' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
