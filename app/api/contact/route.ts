@@ -68,7 +68,7 @@ export async function POST(request: NextRequest) {
 
     // Send email with Resend
     const { error } = await resend.emails.send({
-      from: 'GoAdventuresCR <onboarding@resend.dev>',
+      from: 'GoAdventuresCR <noreply@goadventurescr.com>',
       to: [process.env.CONTACT_EMAIL || 'info@goadventurescr.com'],
       replyTo: email,
       subject: emailSubject,
