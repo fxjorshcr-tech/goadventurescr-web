@@ -256,11 +256,11 @@ The tour includes enough time to enjoy the natural surroundings, swim in the coo
     duration: "6 hours",
     rating: 5.0,
     reviewCount: 8,
-    image: "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/cascada1.png",
+    image: "https://mmlbslwljvmscbgsqkkq.supabase.co/storage/v1/object/sign/Aromal/llanos-catarata-cortes.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iZmNkZjM3My00NzkzLTRhYjQtYmRhOC04OWY1ZmNiMjdhMzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJBcm9tYWwvbGxhbm9zLWNhdGFyYXRhLWNvcnRlcy53ZWJwIiwiaWF0IjoxNzY5NTY1MTU5LCJleHAiOjI0MDAyODUxNTl9.TOfxy4hLeiLdVoqJRDXkxAAq9xdmZZkqh4Jm5i1zNek",
     images: [
-      "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/cascada1.png",
-      "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/cascada2.png",
-      "https://nilwbtoyxujsdvojfipa.supabase.co/storage/v1/object/public/fotos/cascada3.png"
+      "https://mmlbslwljvmscbgsqkkq.supabase.co/storage/v1/object/sign/Aromal/llanos-catarata-cortes.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iZmNkZjM3My00NzkzLTRhYjQtYmRhOC04OWY1ZmNiMjdhMzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJBcm9tYWwvbGxhbm9zLWNhdGFyYXRhLWNvcnRlcy53ZWJwIiwiaWF0IjoxNzY5NTY1MTU5LCJleHAiOjI0MDAyODUxNTl9.TOfxy4hLeiLdVoqJRDXkxAAq9xdmZZkqh4Jm5i1zNek",
+      "https://mmlbslwljvmscbgsqkkq.supabase.co/storage/v1/object/sign/Aromal/llanos-cafe-costa-rica-guana.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iZmNkZjM3My00NzkzLTRhYjQtYmRhOC04OWY1ZmNiMjdhMzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJBcm9tYWwvbGxhbm9zLWNhZmUtY29zdGEtcmljYS1ndWFuYS53ZWJwIiwiaWF0IjoxNzY5NTY1MTM5LCJleHAiOjI0MDAyODUxMzl9.Vvo_3ncKpcdbSoRp5wDbrVtFd-PdxMmDzO685rgMe30",
+      "https://mmlbslwljvmscbgsqkkq.supabase.co/storage/v1/object/sign/Aromal/llanos2-cristian.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iZmNkZjM3My00NzkzLTRhYjQtYmRhOC04OWY1ZmNiMjdhMzciLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJBcm9tYWwvbGxhbm9zMi1jcmlzdGlhbi53ZWJwIiwiaWF0IjoxNzY5NTY1MTcwLCJleHAiOjI0MDAyODUxNzB9.36MUrkYMHHwTV56GumwghOckoXxQqd-3JtQ2MFRy3Rc"
     ],
     category: "Day Trips",
     highlights: [

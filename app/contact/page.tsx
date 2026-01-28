@@ -220,8 +220,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-green-900">WhatsApp</h3>
-                    <a href="https://wa.me/50688888888" className="text-orange-500 hover:text-orange-600">
-                      +506 8888-8888
+                    <a href="https://wa.me/50684254181" className="text-orange-500 hover:text-orange-600">
+                      +506 8425-4181
                     </a>
                     <p className="text-sm text-gray-500">Available 8am - 8pm (Costa Rica time)</p>
                   </div>
