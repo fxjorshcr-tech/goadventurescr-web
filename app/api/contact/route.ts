@@ -6,10 +6,18 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { name, email, phone, subject, message, tourName, guests, date, formType } = body;
 
-    // Validate required fields
-    if (!name || !email || !message) {
+    // Validate required fields based on form type
+    if (!name || !email) {
       return NextResponse.json(
-        { error: 'Name, email, and message are required' },
+        { error: 'Name and email are required' },
+        { status: 400 }
+      );
+    }
+
+    // Message is required for contact forms, but optional for quotes
+    if (formType !== 'quote' && !message) {
+      return NextResponse.json(
+        { error: 'Message is required' },
         { status: 400 }
       );
     }
