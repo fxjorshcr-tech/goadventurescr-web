@@ -228,8 +228,9 @@ export default function BookingForm({ tourName, tourPrice, tourId }: BookingForm
 
                   return data.id;
                 } catch (err) {
-                  console.error('Error creating order:', err);
-                  setPaymentError('Could not initialize payment. Please try again.');
+                  const message = err instanceof Error ? err.message : 'Unknown error';
+                  console.error('Error creating order:', message);
+                  setPaymentError(`Could not initialize payment: ${message}`);
                   throw err;
                 }
               }}
