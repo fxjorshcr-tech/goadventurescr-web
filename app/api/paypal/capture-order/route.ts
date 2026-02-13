@@ -136,23 +136,26 @@ async function sendBookingEmails(bookingDetails: {
 
   try {
     const resend = getResend();
+    console.log('Resend API key configured:', !!process.env.RESEND_API_KEY);
 
     // Send to business
-    await resend.emails.send({
+    const businessResult = await resend.emails.send({
       from: 'GoAdventuresCR <noreply@goadventurescr.com>',
       to: [process.env.CONTACT_EMAIL || 'info@goadventurescr.com'],
       replyTo: email,
       subject: `New Booking: ${tourName} - ${name} (${guests} guests)`,
       html: businessEmailHtml,
     });
+    console.log('Business email result:', JSON.stringify(businessResult));
 
     // Send confirmation to customer
-    await resend.emails.send({
+    const customerResult = await resend.emails.send({
       from: 'GoAdventuresCR <noreply@goadventurescr.com>',
       to: [email],
       subject: `Booking Confirmed: ${tourName} - GoAdventuresCR`,
       html: customerEmailHtml,
     });
+    console.log('Customer email result:', JSON.stringify(customerResult));
   } catch (emailError) {
     console.error('Error sending booking emails:', emailError);
     // Don't fail the payment capture if emails fail
@@ -202,8 +205,13 @@ export async function POST(request: NextRequest) {
       ? JSON.parse(purchaseUnit.custom_id)
       : null;
 
+    console.log('Purchase unit custom_id:', purchaseUnit?.custom_id);
+    console.log('Custom data parsed:', customData);
+
     if (customData) {
       const tour = tours.find((t) => t.id === customData.tourId);
+      console.log('Tour found:', tour?.title);
+      console.log('Sending emails to:', customData.email, 'and', process.env.CONTACT_EMAIL);
 
       // Send confirmation emails
       await sendBookingEmails({
@@ -215,6 +223,8 @@ export async function POST(request: NextRequest) {
         date: customData.date,
         totalAmount: purchaseUnit.payments?.captures?.[0]?.amount?.value || '0',
       });
+    } else {
+      console.error('No custom data found in PayPal order - emails NOT sent');
     }
 
     return NextResponse.json({
