@@ -118,9 +118,10 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ id: order.id });
   } catch (error) {
-    console.error('Error creating PayPal order:', error);
+    const message = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Error creating PayPal order:', message);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: message },
       { status: 500 }
     );
   }
