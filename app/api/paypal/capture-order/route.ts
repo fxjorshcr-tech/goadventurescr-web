@@ -1,0 +1,233 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { Resend } from 'resend';
+import { tours } from '../../../data/tours';
+
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY);
+}
+
+const PAYPAL_API_BASE = process.env.PAYPAL_MODE === 'live'
+  ? 'https://api-m.paypal.com'
+  : 'https://api-m.sandbox.paypal.com';
+
+async function getPayPalAccessToken(): Promise<string> {
+  const clientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
+  const clientSecret = process.env.PAYPAL_CLIENT_SECRET;
+
+  if (!clientId || !clientSecret) {
+    throw new Error('PayPal credentials are not configured');
+  }
+
+  const auth = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
+
+  const response = await fetch(`${PAYPAL_API_BASE}/v1/oauth2/token`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Basic ${auth}`,
+      'Content-Type': 'application/json',
+    },
+    body: 'grant_type=client_credentials',
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to get PayPal access token');
+  }
+
+  const data = await response.json();
+  return data.access_token;
+}
+
+async function sendBookingEmails(bookingDetails: {
+  orderId: string;
+  name: string;
+  email: string;
+  tourName: string;
+  guests: number;
+  date: string;
+  totalAmount: string;
+}) {
+  const { orderId, name, email, tourName, guests, date, totalAmount } = bookingDetails;
+
+  const formattedDate = new Date(date + 'T00:00:00').toLocaleDateString('en-US', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
+  // Email to business
+  const businessEmailHtml = `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+      <div style="background-color: #14532d; padding: 20px; text-align: center;">
+        <h1 style="color: white; margin: 0;">New Booking Confirmed!</h1>
+      </div>
+      <div style="padding: 20px; background-color: #f9fafb;">
+        <h2 style="color: #14532d;">Payment Received via PayPal</h2>
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Order ID</td>
+            <td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-family: monospace;">${orderId}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Tour</td>
+            <td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${tourName}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Customer</td>
+            <td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${name} (${email})</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Guests</td>
+            <td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${guests}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Date</td>
+            <td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${formattedDate}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; font-weight: bold; font-size: 18px;">Total Paid</td>
+            <td style="padding: 8px; font-size: 18px; color: #14532d; font-weight: bold;">$${totalAmount} USD</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  `;
+
+  // Email to customer
+  const customerEmailHtml = `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+      <div style="background-color: #14532d; padding: 30px; text-align: center;">
+        <h1 style="color: white; margin: 0;">Booking Confirmed!</h1>
+        <p style="color: #86efac; margin: 10px 0 0 0;">Thank you for choosing GoAdventuresCR</p>
+      </div>
+
+      <div style="padding: 30px; background-color: #ffffff;">
+        <p style="font-size: 16px; color: #374151;">Hi ${name},</p>
+        <p style="font-size: 16px; color: #374151;">Your booking has been confirmed and payment received. Here are your reservation details:</p>
+
+        <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 20px; margin: 20px 0;">
+          <h3 style="color: #14532d; margin-top: 0;">${tourName}</h3>
+          <p style="margin: 5px 0; color: #374151;"><strong>Date:</strong> ${formattedDate}</p>
+          <p style="margin: 5px 0; color: #374151;"><strong>Guests:</strong> ${guests}</p>
+          <p style="margin: 5px 0; color: #374151;"><strong>Total Paid:</strong> $${totalAmount} USD</p>
+          <p style="margin: 5px 0; color: #6b7280; font-size: 14px;"><strong>Order ID:</strong> ${orderId}</p>
+        </div>
+
+        <h3 style="color: #14532d;">What's Next?</h3>
+        <ul style="color: #374151; line-height: 1.8;">
+          <li>You will receive a detailed itinerary via email before your tour date</li>
+          <li>Hotel pickup details will be confirmed 24 hours before the tour</li>
+          <li>Remember: Free cancellation up to 24 hours before the experience</li>
+        </ul>
+
+        <div style="background-color: #fef3c7; border-radius: 8px; padding: 15px; margin: 20px 0;">
+          <p style="margin: 0; color: #92400e; font-size: 14px;">
+            <strong>Questions?</strong> Contact us via WhatsApp at +506 8425-4181 or reply to this email.
+          </p>
+        </div>
+      </div>
+
+      <div style="background-color: #14532d; padding: 20px; text-align: center;">
+        <p style="color: #86efac; margin: 0; font-size: 14px;">GoAdventuresCR - Adventures in Guanacaste, Costa Rica</p>
+        <p style="color: #6b7280; margin: 5px 0 0 0; font-size: 12px;">info@goadventurescr.com | +506 8425-4181</p>
+      </div>
+    </div>
+  `;
+
+  try {
+    const resend = getResend();
+
+    // Send to business
+    await resend.emails.send({
+      from: 'GoAdventuresCR <noreply@goadventurescr.com>',
+      to: [process.env.CONTACT_EMAIL || 'info@goadventurescr.com'],
+      replyTo: email,
+      subject: `New Booking: ${tourName} - ${name} (${guests} guests)`,
+      html: businessEmailHtml,
+    });
+
+    // Send confirmation to customer
+    await resend.emails.send({
+      from: 'GoAdventuresCR <noreply@goadventurescr.com>',
+      to: [email],
+      subject: `Booking Confirmed: ${tourName} - GoAdventuresCR`,
+      html: customerEmailHtml,
+    });
+  } catch (emailError) {
+    console.error('Error sending booking emails:', emailError);
+    // Don't fail the payment capture if emails fail
+  }
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const { orderID } = body;
+
+    if (!orderID) {
+      return NextResponse.json(
+        { error: 'Order ID is required' },
+        { status: 400 }
+      );
+    }
+
+    const accessToken = await getPayPalAccessToken();
+
+    // Capture the order
+    const response = await fetch(
+      `${PAYPAL_API_BASE}/v2/checkout/orders/${orderID}/capture`,
+      {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+
+    if (!response.ok) {
+      const error = await response.text();
+      console.error('PayPal capture error:', error);
+      return NextResponse.json(
+        { error: 'Failed to capture PayPal payment' },
+        { status: 500 }
+      );
+    }
+
+    const captureData = await response.json();
+
+    // Extract booking details from custom_id
+    const purchaseUnit = captureData.purchase_units?.[0];
+    const customData = purchaseUnit?.custom_id
+      ? JSON.parse(purchaseUnit.custom_id)
+      : null;
+
+    if (customData) {
+      const tour = tours.find((t) => t.id === customData.tourId);
+
+      // Send confirmation emails
+      await sendBookingEmails({
+        orderId: captureData.id,
+        name: customData.name,
+        email: customData.email,
+        tourName: tour?.title || customData.tourId,
+        guests: customData.guests,
+        date: customData.date,
+        totalAmount: purchaseUnit.payments?.captures?.[0]?.amount?.value || '0',
+      });
+    }
+
+    return NextResponse.json({
+      id: captureData.id,
+      status: captureData.status,
+      payer: captureData.payer,
+      amount: purchaseUnit?.payments?.captures?.[0]?.amount?.value,
+    });
+  } catch (error) {
+    console.error('Error capturing PayPal order:', error);
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}

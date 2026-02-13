@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY);
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -66,6 +68,8 @@ export async function POST(request: NextRequest) {
       `;
     }
 
+    const resend = getResend();
+
     // Send email to GoAdventuresCR
     const { error } = await resend.emails.send({
       from: 'GoAdventuresCR <noreply@goadventurescr.com>',
@@ -112,7 +116,7 @@ export async function POST(request: NextRequest) {
         <p>Best regards,<br>The GoAdventuresCR Team</p>
       `;
 
-    await resend.emails.send({
+    await getResend().emails.send({
       from: 'GoAdventuresCR <noreply@goadventurescr.com>',
       to: [email],
       subject: formType === 'quote'
