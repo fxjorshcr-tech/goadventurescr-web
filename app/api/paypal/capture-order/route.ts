@@ -165,7 +165,7 @@ async function sendBookingEmails(bookingDetails: {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { orderID } = body;
+    const { orderID, bookingData } = body;
 
     if (!orderID) {
       return NextResponse.json(
@@ -198,40 +198,32 @@ export async function POST(request: NextRequest) {
     }
 
     const captureData = await response.json();
-
-    // Extract booking details from custom_id
     const purchaseUnit = captureData.purchase_units?.[0];
-    const customData = purchaseUnit?.custom_id
-      ? JSON.parse(purchaseUnit.custom_id)
-      : null;
+    const capturedAmount = purchaseUnit?.payments?.captures?.[0]?.amount?.value || '0';
 
-    console.log('Purchase unit custom_id:', purchaseUnit?.custom_id);
-    console.log('Custom data parsed:', customData);
+    // Use booking data sent from frontend (custom_id from PayPal is unreliable)
+    if (bookingData) {
+      const tour = tours.find((t) => t.id === bookingData.tourId);
+      console.log('Sending booking emails for:', tour?.title, 'to:', bookingData.email);
 
-    if (customData) {
-      const tour = tours.find((t) => t.id === customData.tourId);
-      console.log('Tour found:', tour?.title);
-      console.log('Sending emails to:', customData.email, 'and', process.env.CONTACT_EMAIL);
-
-      // Send confirmation emails
       await sendBookingEmails({
         orderId: captureData.id,
-        name: customData.name,
-        email: customData.email,
-        tourName: tour?.title || customData.tourId,
-        guests: customData.guests,
-        date: customData.date,
-        totalAmount: purchaseUnit.payments?.captures?.[0]?.amount?.value || '0',
+        name: bookingData.name,
+        email: bookingData.email,
+        tourName: tour?.title || bookingData.tourId,
+        guests: bookingData.guests,
+        date: bookingData.date,
+        totalAmount: capturedAmount,
       });
     } else {
-      console.error('No custom data found in PayPal order - emails NOT sent');
+      console.error('No booking data provided - emails NOT sent');
     }
 
     return NextResponse.json({
       id: captureData.id,
       status: captureData.status,
       payer: captureData.payer,
-      amount: purchaseUnit?.payments?.captures?.[0]?.amount?.value,
+      amount: capturedAmount,
     });
   } catch (error) {
     console.error('Error capturing PayPal order:', error);

@@ -242,7 +242,16 @@ export default function BookingForm({ tourName, tourPrice, tourId }: BookingForm
                   const response = await fetch('/api/paypal/capture-order', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ orderID: data.orderID }),
+                    body: JSON.stringify({
+                      orderID: data.orderID,
+                      bookingData: {
+                        tourId,
+                        name: formData.name,
+                        email: formData.email,
+                        guests: formData.guests,
+                        date: formData.date,
+                      },
+                    }),
                   });
 
                   const captureData = await response.json();
