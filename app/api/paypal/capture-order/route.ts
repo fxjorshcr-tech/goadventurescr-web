@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { tours } from '../../../data/tours';
+import { tours, comboTours } from '../../../data/tours';
+
+const allTours = [...tours, ...comboTours];
 
 function getResend() {
   return new Resend(process.env.RESEND_API_KEY);
@@ -203,7 +205,7 @@ export async function POST(request: NextRequest) {
 
     // Use booking data sent from frontend (custom_id from PayPal is unreliable)
     if (bookingData) {
-      const tour = tours.find((t) => t.id === bookingData.tourId);
+      const tour = allTours.find((t) => t.id === bookingData.tourId);
       console.log('Sending booking emails for:', tour?.title, 'to:', bookingData.email);
 
       await sendBookingEmails({

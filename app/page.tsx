@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { tours } from './data/tours';
+import { tours, comboTours } from './data/tours';
 import TourCard from './components/TourCard';
 import ContactForm from './components/ContactForm';
 import ReviewsCarousel from './components/ReviewsCarousel';
@@ -255,6 +255,67 @@ export default function Home() {
               className="inline-block bg-green-900 hover:bg-green-800 text-white px-8 py-4 rounded-full font-bold text-lg transition-colors"
             >
               View all tours
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Private Combo-Experiences Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-6">
+            <span className="inline-block bg-orange-100 text-orange-700 text-sm font-semibold px-4 py-1.5 rounded-full uppercase tracking-wide mb-4">
+              Exclusive Combos
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-4">
+              Private <span className="text-orange-500">Combo-Experiences</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Maximize your adventure with our curated combo tours — combining the best of
+              nature, culture, and adrenaline into unforgettable full-day private experiences
+            </p>
+          </div>
+
+          {/* Combo features bar */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            <div className="flex items-center gap-2 bg-green-50 text-green-800 px-4 py-2 rounded-full text-sm font-medium">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              Private Groups Only
+            </div>
+            <div className="flex items-center gap-2 bg-green-50 text-green-800 px-4 py-2 rounded-full text-sm font-medium">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              Lunch Included
+            </div>
+            <div className="flex items-center gap-2 bg-green-50 text-green-800 px-4 py-2 rounded-full text-sm font-medium">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              Bilingual Guide
+            </div>
+            <div className="flex items-center gap-2 bg-green-50 text-green-800 px-4 py-2 rounded-full text-sm font-medium">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              Hotel Transportation
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {comboTours.map((tour) => (
+              <TourCard key={tour.id} {...tour} />
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href="/tours#combo-experiences"
+              className="inline-block bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full font-bold text-lg transition-colors"
+            >
+              View All Combo Experiences
             </Link>
           </div>
         </div>

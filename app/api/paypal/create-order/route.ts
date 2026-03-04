@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { tours } from '../../../data/tours';
+import { tours, comboTours } from '../../../data/tours';
+
+const allTours = [...tours, ...comboTours];
 
 const PAYPAL_API_BASE = process.env.PAYPAL_MODE === 'live'
   ? 'https://api-m.paypal.com'
@@ -47,7 +49,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Look up the tour to get the real price (prevents client-side price manipulation)
-    const tour = tours.find((t) => t.id === tourId);
+    const tour = allTours.find((t) => t.id === tourId);
     if (!tour) {
       return NextResponse.json(
         { error: 'Tour not found' },
