@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { tours } from '../../data/tours';
+import { tours, comboTours } from '../../data/tours';
 import BookingForm from '../../components/BookingForm';
 import ImageSlider from '../../components/ImageSlider';
 
@@ -8,15 +8,17 @@ interface PageProps {
   params: Promise<{ id: string }>;
 }
 
+const allTours = [...tours, ...comboTours];
+
 export async function generateStaticParams() {
-  return tours.map((tour) => ({
+  return allTours.map((tour) => ({
     id: tour.id,
   }));
 }
 
 export async function generateMetadata({ params }: PageProps) {
   const { id } = await params;
-  const tour = tours.find((t) => t.id === id);
+  const tour = allTours.find((t) => t.id === id);
 
   if (!tour) {
     return {
@@ -32,7 +34,7 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function TourDetailPage({ params }: PageProps) {
   const { id } = await params;
-  const tour = tours.find((t) => t.id === id);
+  const tour = allTours.find((t) => t.id === id);
 
   if (!tour) {
     notFound();
