@@ -17,6 +17,10 @@ function ConfirmationContent() {
   const guests = searchParams.get('guests') || '1';
   const date = searchParams.get('date') || '';
   const amount = searchParams.get('amount') || '0';
+  const pickupLocation = searchParams.get('pickupLocation') || '';
+  const pickupTime = searchParams.get('pickupTime') || '';
+  const tourTime = searchParams.get('tourTime') || '';
+  const nextLevel = searchParams.get('nextLevel') === 'true';
 
   const formattedDate = date
     ? new Date(date + 'T00:00:00').toLocaleDateString('en-US', {
@@ -131,6 +135,30 @@ function ConfirmationContent() {
                   <p className="text-sm text-gray-500 mb-1">Number of Guests</p>
                   <p className="font-semibold text-green-900">{guests} {parseInt(guests) === 1 ? 'guest' : 'guests'}</p>
                 </div>
+                {tourTime && (
+                  <div>
+                    <p className="text-sm text-gray-500 mb-1">Tour Time</p>
+                    <p className="font-semibold text-green-900">{tourTime}</p>
+                  </div>
+                )}
+                {pickupLocation && (
+                  <div>
+                    <p className="text-sm text-gray-500 mb-1">Pickup Location</p>
+                    <p className="font-semibold text-green-900">{pickupLocation}</p>
+                  </div>
+                )}
+                {pickupTime && (
+                  <div>
+                    <p className="text-sm text-gray-500 mb-1">Pickup Time</p>
+                    <p className="font-semibold text-green-900">{pickupTime}</p>
+                  </div>
+                )}
+                {nextLevel && (
+                  <div>
+                    <p className="text-sm text-gray-500 mb-1">Next Level Experience</p>
+                    <p className="font-semibold text-orange-600">Included</p>
+                  </div>
+                )}
                 <div>
                   <p className="text-sm text-gray-500 mb-1">Order ID</p>
                   <p className="font-mono text-sm text-green-900">{orderId}</p>

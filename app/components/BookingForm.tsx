@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 
@@ -11,29 +11,52 @@ interface BookingFormProps {
 }
 
 const WHATSAPP_NUMBER = '50684254181';
+const NEXT_LEVEL_PRICE = 30;
+const CANOPY_TOUR_ID = 'tirolesa-aventura';
+
+const CANOPY_TOUR_TIMES = [
+  { label: '8:00 AM', value: '8:00 AM', pickupTime: '7:15 AM' },
+  { label: '11:00 AM', value: '11:00 AM', pickupTime: '10:15 AM' },
+  { label: '3:00 PM', value: '3:00 PM', pickupTime: '2:15 PM' },
+];
 
 export default function BookingForm({ tourName, tourPrice, tourId }: BookingFormProps) {
   const router = useRouter();
+  const isCanopyTour = tourId === CANOPY_TOUR_ID;
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     guests: 1,
     date: '',
+    pickupLocation: '',
+    pickupTime: isCanopyTour ? '' : '7:00 AM',
+    tourTime: '',
+    nextLevel: false,
   });
   const [isFormValid, setIsFormValid] = useState(false);
   const [showPayment, setShowPayment] = useState(false);
   const [paymentError, setPaymentError] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
 
-  const totalPrice = tourPrice * formData.guests;
+  const canopyPickupTime = useMemo(() => {
+    if (!isCanopyTour || !formData.tourTime) return '';
+    const selected = CANOPY_TOUR_TIMES.find(t => t.value === formData.tourTime);
+    return selected?.pickupTime || '';
+  }, [isCanopyTour, formData.tourTime]);
+
+  const nextLevelTotal = formData.nextLevel ? NEXT_LEVEL_PRICE * formData.guests : 0;
+  const totalPrice = tourPrice * formData.guests + nextLevelTotal;
 
   useEffect(() => {
     const isValid = formData.name.trim() !== '' &&
                     formData.email.trim() !== '' &&
                     formData.email.includes('@') &&
-                    formData.date !== '';
+                    formData.date !== '' &&
+                    formData.pickupLocation.trim() !== '' &&
+                    (isCanopyTour ? formData.tourTime !== '' : formData.pickupTime !== '');
     setIsFormValid(isValid);
-  }, [formData]);
+  }, [formData, isCanopyTour]);
 
   const handleContinueToPayment = (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,11 +67,16 @@ export default function BookingForm({ tourName, tourPrice, tourId }: BookingForm
   };
 
   const getWhatsAppLink = () => {
+    const pickupTimeDisplay = isCanopyTour ? canopyPickupTime : formData.pickupTime;
     const message = encodeURIComponent(
       `Hi! I'm interested in booking the "${tourName}" tour.\n\n` +
       `Name: ${formData.name || '[Your name]'}\n` +
       `Guests: ${formData.guests}\n` +
       `Date: ${formData.date || '[Preferred date]'}\n` +
+      (isCanopyTour ? `Tour Time: ${formData.tourTime}\n` : '') +
+      `Pickup Location: ${formData.pickupLocation || '[Your hotel/Airbnb]'}\n` +
+      `Pickup Time: ${pickupTimeDisplay}\n` +
+      (formData.nextLevel ? `Next Level Experience: Yes (+$${NEXT_LEVEL_PRICE}/person)\n` : '') +
       `Total: $${totalPrice}\n\n` +
       `Can you help me with the reservation?`
     );
@@ -132,14 +160,116 @@ export default function BookingForm({ tourName, tourPrice, tourId }: BookingForm
             />
           </div>
 
+          {/* Tour Time - Only for Canopy Tour */}
+          {isCanopyTour && (
+            <div>
+              <label htmlFor="tourTime" className="block text-sm font-medium text-gray-700 mb-1">
+                Tour Time *
+              </label>
+              <select
+                id="tourTime"
+                required
+                value={formData.tourTime}
+                onChange={(e) => setFormData({ ...formData, tourTime: e.target.value })}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-colors bg-white"
+              >
+                <option value="">Select a time</option>
+                {CANOPY_TOUR_TIMES.map((time) => (
+                  <option key={time.value} value={time.value}>
+                    {time.label}
+                  </option>
+                ))}
+              </select>
+              {canopyPickupTime && (
+                <p className="text-sm text-orange-600 mt-1">
+                  Pickup time: {canopyPickupTime} (45 min before tour)
+                </p>
+              )}
+            </div>
+          )}
+
+          {/* Pickup Location */}
+          <div>
+            <label htmlFor="pickupLocation" className="block text-sm font-medium text-gray-700 mb-1">
+              Pickup Location (Hotel / Airbnb) *
+            </label>
+            <input
+              type="text"
+              id="pickupLocation"
+              required
+              value={formData.pickupLocation}
+              onChange={(e) => setFormData({ ...formData, pickupLocation: e.target.value })}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-colors"
+              placeholder="e.g. Hotel Tamarindo Diria, Airbnb Casa Sol..."
+            />
+          </div>
+
+          {/* Pickup Time - For non-canopy tours */}
+          {!isCanopyTour && (
+            <div>
+              <label htmlFor="pickupTime" className="block text-sm font-medium text-gray-700 mb-1">
+                Pickup Time *
+              </label>
+              <select
+                id="pickupTime"
+                required
+                value={formData.pickupTime}
+                onChange={(e) => setFormData({ ...formData, pickupTime: e.target.value })}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-colors bg-white"
+              >
+                <option value="7:00 AM">7:00 AM</option>
+                <option value="8:00 AM">8:00 AM</option>
+              </select>
+            </div>
+          )}
+
+          {/* Next Level Upgrade - Only for Canopy Tour */}
+          {isCanopyTour && (
+            <div className="bg-gradient-to-r from-orange-50 to-yellow-50 border border-orange-200 rounded-lg p-4">
+              <label className="flex items-start gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={formData.nextLevel}
+                  onChange={(e) => setFormData({ ...formData, nextLevel: e.target.checked })}
+                  className="mt-1 w-5 h-5 text-orange-500 border-gray-300 rounded focus:ring-orange-500 accent-orange-500"
+                />
+                <div>
+                  <span className="font-semibold text-green-900 block">
+                    Add Next Level Experience (+${NEXT_LEVEL_PRICE}/person)
+                  </span>
+                  <span className="text-sm text-gray-600 block mt-1">
+                    Cross breathtaking Tibetan bridges high above the canopy and launch yourself on a Mega Tarzan Swing!
+                  </span>
+                </div>
+              </label>
+            </div>
+          )}
+
           {/* Total Price Display */}
           <div className="bg-gray-50 rounded-lg p-4 mt-4">
             <div className="flex justify-between items-center">
               <span className="text-gray-600">
                 ${tourPrice} x {formData.guests} {formData.guests === 1 ? 'guest' : 'guests'}
               </span>
-              <span className="text-xl font-bold text-green-900">${totalPrice}</span>
+              <span className="text-lg font-semibold text-green-900">${tourPrice * formData.guests}</span>
             </div>
+            {formData.nextLevel && (
+              <div className="flex justify-between items-center mt-1">
+                <span className="text-gray-600">
+                  Next Level ${NEXT_LEVEL_PRICE} x {formData.guests} {formData.guests === 1 ? 'guest' : 'guests'}
+                </span>
+                <span className="text-lg font-semibold text-green-900">${nextLevelTotal}</span>
+              </div>
+            )}
+            {formData.nextLevel && (
+              <div className="border-t border-gray-200 mt-2 pt-2 flex justify-between items-center">
+                <span className="font-semibold text-gray-700">Total</span>
+                <span className="text-xl font-bold text-green-900">${totalPrice}</span>
+              </div>
+            )}
+            {!formData.nextLevel && (
+              <div className="hidden"></div>
+            )}
           </div>
 
           <button
@@ -161,6 +291,14 @@ export default function BookingForm({ tourName, tourPrice, tourId }: BookingForm
               <p><span className="font-medium">Email:</span> {formData.email}</p>
               <p><span className="font-medium">Guests:</span> {formData.guests}</p>
               <p><span className="font-medium">Date:</span> {new Date(formData.date + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+              {isCanopyTour && formData.tourTime && (
+                <p><span className="font-medium">Tour Time:</span> {formData.tourTime}</p>
+              )}
+              <p><span className="font-medium">Pickup Location:</span> {formData.pickupLocation}</p>
+              <p><span className="font-medium">Pickup Time:</span> {isCanopyTour ? canopyPickupTime : formData.pickupTime}</p>
+              {formData.nextLevel && (
+                <p><span className="font-medium text-orange-600">Next Level Experience:</span> <span className="text-orange-600">Yes (+${NEXT_LEVEL_PRICE}/person)</span></p>
+              )}
             </div>
             <div className="border-t border-gray-200 mt-3 pt-3 flex justify-between items-center">
               <span className="font-semibold text-green-900">Total</span>
@@ -217,6 +355,10 @@ export default function BookingForm({ tourName, tourPrice, tourId }: BookingForm
                       name: formData.name,
                       email: formData.email,
                       date: formData.date,
+                      pickupLocation: formData.pickupLocation,
+                      pickupTime: isCanopyTour ? canopyPickupTime : formData.pickupTime,
+                      tourTime: isCanopyTour ? formData.tourTime : undefined,
+                      nextLevel: formData.nextLevel,
                     }),
                   });
 
@@ -250,6 +392,10 @@ export default function BookingForm({ tourName, tourPrice, tourId }: BookingForm
                         email: formData.email,
                         guests: formData.guests,
                         date: formData.date,
+                        pickupLocation: formData.pickupLocation,
+                        pickupTime: isCanopyTour ? canopyPickupTime : formData.pickupTime,
+                        tourTime: isCanopyTour ? formData.tourTime : undefined,
+                        nextLevel: formData.nextLevel,
                       },
                     }),
                   });
@@ -270,7 +416,16 @@ export default function BookingForm({ tourName, tourPrice, tourId }: BookingForm
                     guests: formData.guests.toString(),
                     date: formData.date,
                     amount: captureData.amount || totalPrice.toString(),
+                    pickupLocation: formData.pickupLocation,
+                    pickupTime: isCanopyTour ? canopyPickupTime : formData.pickupTime,
                   });
+
+                  if (isCanopyTour && formData.tourTime) {
+                    params.set('tourTime', formData.tourTime);
+                  }
+                  if (formData.nextLevel) {
+                    params.set('nextLevel', 'true');
+                  }
 
                   router.push(`/booking/confirmation?${params.toString()}`);
                 } catch (err) {

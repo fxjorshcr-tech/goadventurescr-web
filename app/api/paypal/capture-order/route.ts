@@ -47,8 +47,12 @@ async function sendBookingEmails(bookingDetails: {
   guests: number;
   date: string;
   totalAmount: string;
+  pickupLocation?: string;
+  pickupTime?: string;
+  tourTime?: string;
+  nextLevel?: boolean;
 }) {
-  const { orderId, name, email, tourName, guests, date, totalAmount } = bookingDetails;
+  const { orderId, name, email, tourName, guests, date, totalAmount, pickupLocation, pickupTime, tourTime, nextLevel } = bookingDetails;
 
   const formattedDate = new Date(date + 'T00:00:00').toLocaleDateString('en-US', {
     weekday: 'long',
@@ -86,6 +90,22 @@ async function sendBookingEmails(bookingDetails: {
             <td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Date</td>
             <td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${formattedDate}</td>
           </tr>
+          ${tourTime ? `<tr>
+            <td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Tour Time</td>
+            <td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${tourTime}</td>
+          </tr>` : ''}
+          ${pickupLocation ? `<tr>
+            <td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Pickup Location</td>
+            <td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${pickupLocation}</td>
+          </tr>` : ''}
+          ${pickupTime ? `<tr>
+            <td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Pickup Time</td>
+            <td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${pickupTime}</td>
+          </tr>` : ''}
+          ${nextLevel ? `<tr>
+            <td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Next Level Experience</td>
+            <td style="padding: 8px; border-bottom: 1px solid #e5e7eb; color: #ea580c; font-weight: bold;">Yes (+$30/person)</td>
+          </tr>` : ''}
           <tr>
             <td style="padding: 8px; font-weight: bold; font-size: 18px;">Total Paid</td>
             <td style="padding: 8px; font-size: 18px; color: #14532d; font-weight: bold;">$${totalAmount} USD</td>
@@ -110,7 +130,11 @@ async function sendBookingEmails(bookingDetails: {
         <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 20px; margin: 20px 0;">
           <h3 style="color: #14532d; margin-top: 0;">${tourName}</h3>
           <p style="margin: 5px 0; color: #374151;"><strong>Date:</strong> ${formattedDate}</p>
+          ${tourTime ? `<p style="margin: 5px 0; color: #374151;"><strong>Tour Time:</strong> ${tourTime}</p>` : ''}
           <p style="margin: 5px 0; color: #374151;"><strong>Guests:</strong> ${guests}</p>
+          ${pickupLocation ? `<p style="margin: 5px 0; color: #374151;"><strong>Pickup Location:</strong> ${pickupLocation}</p>` : ''}
+          ${pickupTime ? `<p style="margin: 5px 0; color: #374151;"><strong>Pickup Time:</strong> ${pickupTime}</p>` : ''}
+          ${nextLevel ? `<p style="margin: 5px 0; color: #ea580c;"><strong>Next Level Experience:</strong> Included (Tibetan Bridges & Mega Tarzan Swing)</p>` : ''}
           <p style="margin: 5px 0; color: #374151;"><strong>Total Paid:</strong> $${totalAmount} USD</p>
           <p style="margin: 5px 0; color: #6b7280; font-size: 14px;"><strong>Order ID:</strong> ${orderId}</p>
         </div>
@@ -216,6 +240,10 @@ export async function POST(request: NextRequest) {
         guests: bookingData.guests,
         date: bookingData.date,
         totalAmount: capturedAmount,
+        pickupLocation: bookingData.pickupLocation,
+        pickupTime: bookingData.pickupTime,
+        tourTime: bookingData.tourTime,
+        nextLevel: bookingData.nextLevel,
       });
     } else {
       console.error('No booking data provided - emails NOT sent');

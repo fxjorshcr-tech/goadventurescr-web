@@ -40,6 +40,9 @@ In addition to the ziplines discover:
 • Spiral staircase wrapping around a giant Guanacaste tree
 • And even a Tarzan swing!
 
+NEXT LEVEL EXPERIENCE
+Ready to take it up a notch? Upgrade to the Next Level and enjoy an adrenaline-packed extension that includes crossing breathtaking Tibetan bridges high above the forest canopy and launching yourself on a Mega Tarzan Swing — one of the most thrilling experiences in Guanacaste! Feel the rush as you soar through the air surrounded by the tropical jungle. This upgrade is available for an additional $30 per person.
+
 SUNSET
 The most beautiful sunsets need a cloudy sky to paint the world artistically in orange and purple! Put on your helmet and turn on your headlamp because things are about to get serious! Swing like Tarzan from tree to tree, fly on ziplines through the sky and cross a hanging bridge as night approaches.
 
