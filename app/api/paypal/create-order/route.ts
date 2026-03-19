@@ -38,7 +38,7 @@ async function getPayPalAccessToken(): Promise<string> {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { tourId, guests, name, email, date } = body;
+    const { tourId, guests, name, email, date, pickupLocation, pickupTime, tourTime, nextLevel } = body;
 
     // Validate required fields
     if (!tourId || !guests || !name || !email || !date) {
@@ -57,15 +57,42 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const totalPrice = (tour.price * guests).toFixed(2);
+    const NEXT_LEVEL_PRICE = 30;
+    const nextLevelTotal = (nextLevel && tourId === 'tirolesa-aventura') ? NEXT_LEVEL_PRICE * guests : 0;
+    const totalPrice = (tour.price * guests + nextLevelTotal).toFixed(2);
+    const baseTourTotal = (tour.price * guests).toFixed(2);
 
     const accessToken = await getPayPalAccessToken();
+
+    const items = [
+      {
+        name: tour.title,
+        unit_amount: {
+          currency_code: 'USD',
+          value: tour.price.toFixed(2),
+        },
+        quantity: guests.toString(),
+        category: 'DIGITAL_GOODS' as const,
+      },
+    ];
+
+    if (nextLevelTotal > 0) {
+      items.push({
+        name: 'Next Level Experience (Tibetan Bridges & Mega Tarzan Swing)',
+        unit_amount: {
+          currency_code: 'USD',
+          value: NEXT_LEVEL_PRICE.toFixed(2),
+        },
+        quantity: guests.toString(),
+        category: 'DIGITAL_GOODS' as const,
+      });
+    }
 
     const orderPayload = {
       intent: 'CAPTURE',
       purchase_units: [
         {
-          description: `${tour.title} - ${guests} guest(s) on ${date}`,
+          description: `${tour.title} - ${guests} guest(s) on ${date}${nextLevel ? ' + Next Level' : ''}`,
           amount: {
             currency_code: 'USD',
             value: totalPrice,
@@ -76,23 +103,17 @@ export async function POST(request: NextRequest) {
               },
             },
           },
-          items: [
-            {
-              name: tour.title,
-              unit_amount: {
-                currency_code: 'USD',
-                value: tour.price.toFixed(2),
-              },
-              quantity: guests.toString(),
-              category: 'DIGITAL_GOODS',
-            },
-          ],
+          items,
           custom_id: JSON.stringify({
             tourId,
             name,
             email,
             guests,
             date,
+            pickupLocation,
+            pickupTime,
+            tourTime,
+            nextLevel,
           }),
         },
       ],
