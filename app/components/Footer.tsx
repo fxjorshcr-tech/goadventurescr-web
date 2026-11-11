@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import PoweredByMaxDigital from './PoweredByMaxDigital';
 
 export default function Footer() {
   return (
@@ -78,6 +79,8 @@ export default function Footer() {
         <div className="border-t border-green-800 mt-8 pt-8 text-center text-gray-400">
           <p>&copy; {new Date().getFullYear()} GoAdventuresCR. All rights reserved.</p>
         </div>
+
+        <PoweredByMaxDigital className="mt-8" />
       </div>
     </footer>
   );
